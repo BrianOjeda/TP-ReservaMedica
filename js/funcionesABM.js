@@ -1,6 +1,5 @@
 function BorrarCD(idParametro)
 {
-	//alert(idParametro);
 		var funcionAjax=$.ajax({
 		url:"nexo.php",
 		type:"post",
@@ -42,45 +41,32 @@ function EditarCD(idParametro)
 	Mostrar("MostrarFormAlta");
 }
 
-function GuardarHDC()
+function GuardarPersona()
 {		
-		alert($('select[name=fechas]').val());
-		var aoi=$("#aoi").val();
-		var incendio=$("#aoi-incendio").val();
-		var lesiones=$("#aoi-lesiones").val();
-		var penitenciario=$("#agregarPenitenciario").val();
-		var autoagresion=$("#autoagresion").val();
-		var suicidio=$("#tentativaSuicidio").val();
-		var tomaRehenes=$("#tomaRehenes").val();
-		var unidad=$('select[name=unidades]').val();
-		var mes=$('select[name=fechas]').val();
+		var nombre=$("#nombre").val();
+		var apellido=$("#apellido").val();
+		var direccion=$("#direccion").val();
+		var telefono=$("#telefono").val();
+		var dni=$("#dni").val();
+	
 
 		var funcionAjax=$.ajax({
 		url:"nexoABM.php",
 		type:"post",
 		data:{
-			queHacer:"GuardarHDC",
-			aoi:aoi,
-			incendio:incendio,
-			lesiones:lesiones,
-			penitenciario:penitenciario,
-			autoagresion:autoagresion,
-			suicidio:suicidio,
-			tomaRehenes:tomaRehenes,
-			unidad:unidad,
-			mes:mes	
+			queHacer:"GuardarPersona",
+			nombre:nombre,
+			apellido:apellido,
+			direccion:direccion,
+			telefono:telefono,
+			dni:dni,
 		}
 	});
 	funcionAjax.done(function(retorno){
-		//	Mostrar("MostrarGrilla");
 		alert(retorno);
-		//alert("El registro se ingreso correctamente");
-		//alert("Mi retorno"+retorno);
-		//$("#informe").html("cantidad de agregados "+ retorno);	
-		
+		Mostrar('altaPersona');
 	});
 	funcionAjax.fail(function(retorno){	
-		//$("#informe").html(retorno.responseText);	
 		alert("Error al ingresar el registro");
 	});	
 }
