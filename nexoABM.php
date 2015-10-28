@@ -1,6 +1,8 @@
 <?php 
 require_once("class/AccesoDatos.php");
 require_once("class/persona.php");
+require_once("class/especialidad.php");
+require_once("class/medico.php");
 
 $queHago=$_POST['queHacer'];
 
@@ -13,21 +15,31 @@ switch ($queHago) {
 
 		break;
 	case 'GuardarPersona':
+
 			$persona = new persona();
 			$persona->nombre=$_POST['nombre'];
 			$persona->apellido=$_POST['apellido'];
 			$persona->direccion=$_POST['direccion'];
 			$persona->telefono=$_POST['telefono'];
 			$persona->dni=$_POST['dni'];
+			$persona->foto=$_POST['foto'];
 			$persona->Guardar();
 			echo "Persona insertada correctamente";
 
 		break;
-	case 'TraerCD':
-			$cd = cd::TraerUnCd($_POST['id']);		
-			echo json_encode($cd) ;
-
+	case 'GuardarEspecialidad':
+			$especialidad = new especialidad();		
+			$especialidad->descripcion=$_POST['especialidad'];
+			$especialidad->Guardar();
+			echo "Especialidad insertada correctamente";
 		break;
+	case 'GuardarMedico':
+			$medico = new medico();		
+			$medico->idEspecialidad=$_POST['especialidad'];
+			$medico->idPersona=$_POST['persona'];
+			$medico->Guardar();
+			echo "Medico insertada correctamente";
+		break;	
 	default:
 		# code...
 		break;

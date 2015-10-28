@@ -41,6 +41,29 @@ function EditarCD(idParametro)
 	Mostrar("MostrarFormAlta");
 }
 
+
+function GuardarEspecialidad()
+{		
+		var especialidad=$("#especialidad").val();
+	
+
+		var funcionAjax=$.ajax({
+		url:"nexoABM.php",
+		type:"post",
+		data:{
+			queHacer:"GuardarEspecialidad",
+			especialidad:especialidad,
+		}
+	});
+	funcionAjax.done(function(retorno){
+		alert(retorno);
+		Mostrar('altaEspecialidad');
+	});
+	funcionAjax.fail(function(retorno){	
+		alert("Error al ingresar el registro");
+	});	
+
+}
 function GuardarPersona()
 {		
 		var nombre=$("#nombre").val();
@@ -48,7 +71,8 @@ function GuardarPersona()
 		var direccion=$("#direccion").val();
 		var telefono=$("#telefono").val();
 		var dni=$("#dni").val();
-	
+		var foto=$("#foto").val();
+
 
 		var funcionAjax=$.ajax({
 		url:"nexoABM.php",
@@ -60,6 +84,8 @@ function GuardarPersona()
 			direccion:direccion,
 			telefono:telefono,
 			dni:dni,
+			foto:foto,
+		
 		}
 	});
 	funcionAjax.done(function(retorno){
@@ -69,4 +95,27 @@ function GuardarPersona()
 	funcionAjax.fail(function(retorno){	
 		alert("Error al ingresar el registro");
 	});	
+
+}
+function GuardarMedico()
+{		
+		var especialidad=$("#especialidad").val();
+		var persona=$("#persona").val();
+		var funcionAjax=$.ajax({
+		url:"nexoABM.php",
+		type:"post",
+		data:{
+			queHacer:"GuardarMedico",
+			especialidad:especialidad,
+			persona:persona
+		}
+	});
+	funcionAjax.done(function(retorno){
+		alert(retorno);
+		Mostrar('altaMedico');
+	});
+	funcionAjax.fail(function(retorno){	
+		alert("Error al ingresar el registro");
+	});	
+
 }

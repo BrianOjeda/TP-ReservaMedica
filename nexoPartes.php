@@ -23,6 +23,15 @@ switch ($queHago) {
 	case 'altaPersona':
 		include("partes/frmAltaPersona.php");
 	break;
+	
+	case 'altaEspecialidad':
+		include("partes/frmAltaEspecialidad.php");
+	break;
+	case 'altaMedico':
+		include("partes/frmAltaMedico.php");
+	break;
+	case 'altaTurno':
+		include("partes/frmAltaTurno.php");
 	default:
 		# code...
 		break;

@@ -14,7 +14,7 @@
 			  <a onclick="Mostrar('clinico')" class="list-group-item  list-group-item list-group-item-success">
 				 <h4 class="list-group-item-heading">Agregar  medico</h4>
 			  </a>
-			    <a onclick="Mostrar('clinico')" class="list-group-item  list-group-item list-group-item-success">
+			    <a onclick="Mostrar('altaEspecialidad')" class="list-group-item  list-group-item list-group-item-success">
 				 <h4 class="list-group-item-heading">Agregar  especialidad</h4>
 			  </a>
 			    <a onclick="Mostrar('clinico')" class="list-group-item  list-group-item list-group-item-success">

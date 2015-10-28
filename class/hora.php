@@ -1,13 +1,9 @@
 <?php
-class persona
+class hora
 {
 	public $id;
- 	public $nombre;
-  	public $apellido;
-  	public $direccion;
-  	public $telefono;
-  	public $dni;
-  	public $foto;
+ 	public $descripcion;
+  
 
   	public function BorrarCd()
 	 {
@@ -75,38 +71,35 @@ class persona
 			return $consulta->execute();
 	 }
 
-	 public function Insertar()
+	 public function InsertarElCdParametros()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("call InsertarPersona(:nombre,:apellido,:direccion,:telefono,:dni,:foto)");
-				$consulta->bindValue(':nombre',$this->nombre, PDO::PARAM_STR);
-				$consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
-				$consulta->bindValue(':direccion', $this->direccion, PDO::PARAM_STR);
-				$consulta->bindValue(':telefono',$this->telefono, PDO::PARAM_INT);
-				$consulta->bindValue(':dni', $this->dni, PDO::PARAM_INT);
-				$consulta->bindValue(':foto', $this->foto, PDO::PARAM_STR);
+				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into cds (titel,interpret,jahr)values(:titulo,:cantante,:anio)");
+				$consulta->bindValue(':titulo',$this->titulo, PDO::PARAM_INT);
+				$consulta->bindValue(':anio', $this->año, PDO::PARAM_STR);
+				$consulta->bindValue(':cantante', $this->cantante, PDO::PARAM_STR);
 				$consulta->execute();		
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
-	 public function Guardar()
+	 public function GuardarCD()
 	 {
 
 	 	if($this->id>0)
 	 		{
 	 			$this->ModificarCdParametros();
 	 		}else {
-	 			$this->Insertar();
+	 			$this->InsertarElCdParametros();
 	 		}
 
 	 }
 
 
-  	public static function TraerTodoLasPersonas()
+  	public static function TraerTodasLasHoras()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodasLasPersonas()");
+			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodasLasHoras()");
 			$consulta->execute();			
-			return $consulta->fetchAll(PDO::FETCH_CLASS, "persona");		
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "hora");		
 	}
 
 	public static function TraerUnCd($id) 

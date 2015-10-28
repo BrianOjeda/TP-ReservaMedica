@@ -1,13 +1,13 @@
 <?php
-class persona
+class medico
 {
 	public $id;
- 	public $nombre;
+ 	public $idEspecialidad;
+  	public $idPersona;
+  	public $nombre;
   	public $apellido;
-  	public $direccion;
-  	public $telefono;
-  	public $dni;
-  	public $foto;
+  	public $especialidad;
+
 
   	public function BorrarCd()
 	 {
@@ -78,13 +78,9 @@ class persona
 	 public function Insertar()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("call InsertarPersona(:nombre,:apellido,:direccion,:telefono,:dni,:foto)");
-				$consulta->bindValue(':nombre',$this->nombre, PDO::PARAM_STR);
-				$consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
-				$consulta->bindValue(':direccion', $this->direccion, PDO::PARAM_STR);
-				$consulta->bindValue(':telefono',$this->telefono, PDO::PARAM_INT);
-				$consulta->bindValue(':dni', $this->dni, PDO::PARAM_INT);
-				$consulta->bindValue(':foto', $this->foto, PDO::PARAM_STR);
+				$consulta =$objetoAccesoDato->RetornarConsulta("call InsertarMedico(:idEspecialidad,:idPersona)");
+				$consulta->bindValue(':idEspecialidad', $this->idEspecialidad, PDO::PARAM_STR);
+				$consulta->bindValue(':idPersona', $this->idPersona, PDO::PARAM_STR);
 				$consulta->execute();		
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
@@ -101,12 +97,12 @@ class persona
 	 }
 
 
-  	public static function TraerTodoLasPersonas()
+  	public static function TraerTodosLosMedicos()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodasLasPersonas()");
+			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodosLosMedicos()");
 			$consulta->execute();			
-			return $consulta->fetchAll(PDO::FETCH_CLASS, "persona");		
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "medico");		
 	}
 
 	public static function TraerUnCd($id) 

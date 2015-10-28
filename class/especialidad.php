@@ -1,14 +1,9 @@
 <?php
-class persona
+class especialidad
 {
 	public $id;
- 	public $nombre;
-  	public $apellido;
-  	public $direccion;
-  	public $telefono;
-  	public $dni;
-  	public $foto;
-
+ 	public $descripcion;
+ 
   	public function BorrarCd()
 	 {
 	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
@@ -78,13 +73,8 @@ class persona
 	 public function Insertar()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("call InsertarPersona(:nombre,:apellido,:direccion,:telefono,:dni,:foto)");
-				$consulta->bindValue(':nombre',$this->nombre, PDO::PARAM_STR);
-				$consulta->bindValue(':apellido', $this->apellido, PDO::PARAM_STR);
-				$consulta->bindValue(':direccion', $this->direccion, PDO::PARAM_STR);
-				$consulta->bindValue(':telefono',$this->telefono, PDO::PARAM_INT);
-				$consulta->bindValue(':dni', $this->dni, PDO::PARAM_INT);
-				$consulta->bindValue(':foto', $this->foto, PDO::PARAM_STR);
+				$consulta =$objetoAccesoDato->RetornarConsulta("call InsertarEspecialidad(:descripcion)");
+				$consulta->bindValue(':descripcion',$this->descripcion, PDO::PARAM_STR);
 				$consulta->execute();		
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
@@ -101,12 +91,12 @@ class persona
 	 }
 
 
-  	public static function TraerTodoLasPersonas()
+  	public static function TraerTodoLasEspecialidades()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodasLasPersonas()");
+			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodasLasEspecialidades()");
 			$consulta->execute();			
-			return $consulta->fetchAll(PDO::FETCH_CLASS, "persona");		
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "especialidad");		
 	}
 
 	public static function TraerUnCd($id) 
