@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2015 a las 00:02:04
+-- Tiempo de generación: 29-10-2015 a las 05:54:22
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -37,6 +37,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarPersona`(IN `nom` VARCHAR(5
 INSERT into persona(nombre,apellido,direccion,telefono,dni,foto)
 				values(nom,ape,direc,tel,dn,fot)$$
 
+CREATE DEFINER=`root`@`localhost` PROCEDURE `InsertarTurno`(IN `date` VARCHAR(50), IN `medico` VARCHAR(50), IN `hora` VARCHAR(50))
+    NO SQL
+INSERT INTO turno_medico(idMedico,idDate,idHora) VALUES(medico,date,hora)$$
+
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerID`(IN `usuario` VARCHAR(50), IN `contrasena` VARCHAR(50))
     NO SQL
 SELECT u.id FROM usuario u
@@ -67,6 +71,10 @@ CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerTodosLosMedicos`()
     NO SQL
 select m.idMedico as id,p.nombre as nombre,p.apellido as apellido,e.descripcion as especialidad 
 from medico m join persona p on(m.idPersona=p.idPersona) join especialidad e on(m.idEspecialidad=e.idEspecialidad)$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerTodosLosTurnos`()
+    NO SQL
+select t.idTurno as id,t.idMedico,t.idDate,t.idhora from turno_medico t$$
 
 DELIMITER ;
 
@@ -5408,7 +5416,17 @@ CREATE TABLE IF NOT EXISTS `turno_medico` (
   `idMedico` int(11) NOT NULL,
   `idDate` int(11) NOT NULL,
   `idhora` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+
+--
+-- Volcado de datos para la tabla `turno_medico`
+--
+
+INSERT INTO `turno_medico` (`idTurno`, `idMedico`, `idDate`, `idhora`) VALUES
+(1, 1, 666, 1),
+(2, 2, 666, 1),
+(3, 3, 666, 1),
+(4, 1, 666, 3);
 
 -- --------------------------------------------------------
 
@@ -5489,6 +5507,12 @@ ALTER TABLE `tipo_usuario`
   ADD PRIMARY KEY (`idTipoUsuario`);
 
 --
+-- Indices de la tabla `turno_medico`
+--
+ALTER TABLE `turno_medico`
+  ADD PRIMARY KEY (`idTurno`);
+
+--
 -- Indices de la tabla `usuario`
 --
 ALTER TABLE `usuario`
@@ -5538,6 +5562,11 @@ ALTER TABLE `sexo`
 --
 ALTER TABLE `tipo_usuario`
   MODIFY `idTipoUsuario` int(11) NOT NULL AUTO_INCREMENT;
+--
+-- AUTO_INCREMENT de la tabla `turno_medico`
+--
+ALTER TABLE `turno_medico`
+  MODIFY `idTurno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

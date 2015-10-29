@@ -3,6 +3,7 @@ require_once("class/AccesoDatos.php");
 require_once("class/persona.php");
 require_once("class/especialidad.php");
 require_once("class/medico.php");
+require_once("class/turno.php");
 
 $queHago=$_POST['queHacer'];
 
@@ -39,6 +40,14 @@ switch ($queHago) {
 			$medico->idPersona=$_POST['persona'];
 			$medico->Guardar();
 			echo "Medico insertada correctamente";
+		break;	
+	case 'GuardarTurno':
+			$turno = new turno();		
+			$turno->idMedico=$_POST['medico'];
+			$turno->idDate=$_POST['date'];
+			$turno->idHora=$_POST['hora'];
+			$turno->Guardar();
+			echo "turno insertado correctamente";
 		break;	
 	default:
 		# code...

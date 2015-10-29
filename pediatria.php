@@ -1,5 +1,14 @@
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
+<?php
+	require_once("class/AccesoDatos.php");
+	require_once("class/especialidad.php");
+	require_once("class/medico.php");
+	require_once("class/turno.php"); 
+
+	$arrayMedico=medico::TraerTodosLosMedicos();
+	$arrayTurno=turno::TraerTodosLosTurnos();
+ ?>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -35,26 +44,29 @@
 												<th >Reserva tu turno</th>
 											</tr>
 											<tr>
-												<th>Nombre</th><th>Apellido</th><th>Turnos disponibles</th><th>Reservar</th>
+												<th>Nombre</th><th>Apellido</th><th>Turnos disponibles</th><th>Foto</th><th>Reservar</th>
 											</tr>
 										</thead>
 										<tbody>
 											<?php 
-											for ($i=0; $i < 5; $i++) { 
+											foreach ($arrayMedico as $medico) {
 
-												# code...
-												echo"<tr >
-												<td>Roberto</td>
-												<td>Te Elijo</td>
-												<td><select name='turnos'>
+											echo"	<tr>
+												<td>$medico->nombre</td>
+												<td>$medico->apellido</td>";
+												foreach ($arrayTurno as $turno) {
+													if($turno->idMedico==$medico->idMedico)
+													{
+														echo "<td><select name='turnos'>
 
-							           			 <option >turno1</option>
-							           			 <option >turno2</option>
-							           			 <option>turno3</option></select></td>";
-							           			 echo "<td><input type='button' value='Reservar' onclick='";
-							           			 echo 'Mostrar("altaReserva")';
-							           			 echo "' ></td></tr>";
+									           			 <option value='$turno->id'>$turno->idHora</option>";
+									  
+													}
+												}
+
+												echo"	</tr>";
 											}
+											
 										
 											 ?>
 										</tbody>

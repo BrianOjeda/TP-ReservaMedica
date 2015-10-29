@@ -119,3 +119,27 @@ function GuardarMedico()
 	});	
 
 }
+function GuardarTurno()
+{		
+		var medico=$("#medico").val();
+		var date=$("#date").val();
+		var hora=$("#hora").val();
+		var funcionAjax=$.ajax({
+		url:"nexoABM.php",
+		type:"post",
+		data:{
+			queHacer:"GuardarTurno",
+			medico:medico,
+			date:date,
+			hora:hora
+		}
+	});
+	funcionAjax.done(function(retorno){
+		alert(retorno);
+		Mostrar('altaTurno');
+	});
+	funcionAjax.fail(function(retorno){	
+		alert("Error al ingresar el registro");
+	});	
+
+}
