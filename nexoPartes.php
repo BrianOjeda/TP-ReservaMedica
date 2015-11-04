@@ -32,6 +32,12 @@ switch ($queHago) {
 	break;
 	case 'altaTurno':
 		include("partes/frmAltaTurno.php");
+		break;
+	case 'altaReserva':
+		$idMedico=$_POST['medico'];
+		$idTurno=$_POST['turno'];
+		include("partes/frmAltaReserva.php");
+		break;
 	default:
 		# code...
 		break;

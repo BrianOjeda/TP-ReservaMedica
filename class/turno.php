@@ -95,7 +95,7 @@ class turno
 	 }
 
 
-  	public static function TraerTodoLosTurnos()
+  	public static function TraerTodosLosTurnos()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodosLosTurnos()");

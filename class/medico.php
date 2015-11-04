@@ -7,7 +7,7 @@ class medico
   	public $nombre;
   	public $apellido;
   	public $especialidad;
-
+  	public $foto;
 
   	public function BorrarCd()
 	 {

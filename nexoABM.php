@@ -5,6 +5,7 @@ require_once("class/especialidad.php");
 require_once("class/medico.php");
 require_once("class/turno.php");
 
+
 $queHago=$_POST['queHacer'];
 
 switch ($queHago) {
@@ -16,16 +17,22 @@ switch ($queHago) {
 
 		break;
 	case 'GuardarPersona':
-
-			$persona = new persona();
-			$persona->nombre=$_POST['nombre'];
-			$persona->apellido=$_POST['apellido'];
-			$persona->direccion=$_POST['direccion'];
-			$persona->telefono=$_POST['telefono'];
-			$persona->dni=$_POST['dni'];
-			$persona->foto=$_POST['foto'];
-			$persona->Guardar();
-			echo "Persona insertada correctamente";
+			$destino="fotos/".$_FILES["foto"]["name"];
+		
+			if(move_uploaded_file($_FILES["foto"]["tmp_name"], $destino))
+			{
+				$persona = new persona();
+				$persona->nombre=$_POST['nombre'];
+				$persona->apellido=$_POST['apellido'];
+				$persona->direccion=$_POST['direccion'];
+				$persona->telefono=$_POST['telefono'];
+				$persona->dni=$_POST['dni'];
+				$persona->foto=$_FILES["foto"]["name"];
+				$persona->Guardar();
+				echo "<script>alert('Persona insertada correctamente');</script>";
+				header("location:baseDatos.html");
+			}
+			
 
 		break;
 	case 'GuardarEspecialidad':

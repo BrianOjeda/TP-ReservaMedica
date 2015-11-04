@@ -1,14 +1,14 @@
- 
 
-
- $("#login-button").click(function(event){
+ 	$("#login-button").click(function(event)
+ 	{
 		 event.preventDefault();
 	 
-	 $('form').fadeOut(500);
-	 $('.wrapper').addClass('form-success');
-	validarLogin();
-});
-
+		 $('form').fadeOut(500);
+		 $('.wrapper').addClass('form-success');
+		validarLogin();
+	}
+	);
+ 
  function validarLogin()
 {
 		var varUsuario=$("#correo").val();
@@ -24,21 +24,22 @@
 	});
 
 	funcionAjax.done(function(respuesta){
-
+				//alert(respuesta);
         		if(respuesta=="correcto")
         		{
 					//$("#MensajeError").val("");
 					window.location.href="http://localhost/ReservaMedica/home.php"; 			// vamos al menu
-					alert("hola");
+					alert("Usuario correcto, bienvenido");
         		}
         		else
         		{
-        			window.location.href = "http://localhost/ReservaMedica/Index.php";
         			alert(respuesta);
+        			window.location.href = "http://localhost/ReservaMedica/home.php";
+        			
         		}
 		});
 	funcionAjax.fail(function(retorno){	
 		//$("#informe").html(retorno.responseText);	
-		alert("Error al ingresar el registro");
+		alert("Error :(");
 	});	
 }

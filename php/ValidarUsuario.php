@@ -1,21 +1,10 @@
 <?php 
 
 require_once("../class/usuario.php");
-//require("AccesoDatos.php");
-//session_start();
-	//echo "Validado por ajax";
-	//if($_GET('usuario')=="octavio")
-	//{
-//		echo true;
-//	}
-//	else
-//	{
-//		echo false;
-//	}
-//var_dump($_POST);
 
-//echo "lala";
-$arrayUsuario=usuario::traerID($_POST['usuario'],$_POST['clave']);
+$contrasena=md5($_POST['clave']);
+//echo $contrasena;
+$arrayUsuario=usuario::traerID($_POST['usuario'],$contrasena);
 //if(count($arrayUsuario)<1)
 $id=0;
 foreach ($arrayUsuario as $usuario ) {
@@ -29,22 +18,9 @@ if($id==null or $id ==0)
 else
 {
 	session_start(); 
-	$_SESSION["autentificado"]= "SI"; 
+	$_SESSION['registrado']= $_POST['usuario'];
 	echo "correcto";
-	//var_dump($arrayUsuario);
 }
 
-//$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-//$consulta = $objetoAccesoDato->RetornarConsulta("SELECT IdUsuario FROM Usuario WHERE Usuario='".$_POST['usuario']."' and Password='".$_POST['clave']."'");
-//var_dump($consulta);
-//if()
-//{
-//	echo 1;
-//	$_SESSION['usuarioRegistrado']=$_POST['nombre'];
-//}
-//else
-//{
-//	echo false;
-//}
 
  ?>

@@ -1,58 +1,52 @@
-    <?php
-    require_once("class\AccesoDatos.php");
+<?php 
+  require("class/AccesoDatos.php"); 
+  require("class/hora.php"); 
+  require("class/medico.php"); 
+  require("class/date.php");
 
-    require("class\obraSocial.php"); 
 
-      $arrayObrasocial=obraSocial::TraerObraSociales();
-     ?> 
-      <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/altaReserva.css">
-     <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-   
-     <div id="headerAlta" class="headerAlta">
-        
-     </div>
-    <form class="form-ingreso" onsubmit="GuardarCD();return false">
-        
+
+  $arrayMedico=medico::TraerTodosLosMedicos();
+  $arrayDate=date::TraerTodasLasFechas();
+  $arrayHora=hora::TraerTodasLasHoras();
+  $idMedico=$_GET['idMedico'];
+   echo "<script type='text/javascript'>alert(' $idMedico');</script>";
+
+ ?>
+
+<div class="CajaInicio animated bounceInRight">
+	<h1> Alta Turno</h1>
+			<!--  -->
+	 <form class="form-ingreso" onsubmit="GuardarTurno();return false" enctype="multipart/form-data">
        
-        <input type="radio" name="sex" value="Masculino" >Masculino
-        <input type="radio" name="sex" value="Femenino"  >Femenino
-
-        <p><input type="checkbox" name="check"/> Con obra social</p>
-          <p><input type="checkbox"  /> Sin obra social</p>
-
-            <p> <h4 class="form-ingreso-heading ">Obra social:</h4></p> 
-
-            <select name="ObraSocial" class="list-group-item  list-group-item list-group-item-success combo">
+         <select id="medico" name="medico" class="list-group-item  list-group-item list-group-item-success form-control">
                  <?php
-                     foreach ($arrayObrasocial as $obraSocial) 
+                     foreach ($arrayMedico as $medico) 
                       {
-                         echo "<option value='$obraSocial->id'>$obraSocial->descripcion</option>";
+                         echo "<option value='$medico->id'>Nombre:$medico->nombre Apellido: $medico->apellido especialidad:$medico->especialidad </option>";
+                      } 
+                 ?>
+          </select>
+        </br>
+           <select id="date" name="date" class="list-group-item  list-group-item list-group-item-success form-control">
+                 <?php
+                     foreach ($arrayDate as $date) 
+                      {
+                         echo "<option value='$date->id'>$date->fecha</option>";
                        } 
                  ?>
-              </select>
-         <p> <h4 class="form-ingreso-heading combo" >Turnos disponibles:</h4></p> 
-        <select name="unidades" class="combo">
-          <?php 
-              for ($i=0; $i < 5; $i++) { 
-
-                # code...
-                echo"
-                       <option >turno1</option>
-                       <option >turno2</option>
-                       <option>turno3</option>";
-              }
-
-         ?>
-        </select>
-
-        <textarea rows="4" cols="50" class="estilotextarea list-group-item-success"> lalala</textarea></br>
-        <textarea rows="4" cols="50" class=" list-group-item-success">lalala</textarea></br>
-        <textarea rows="4" cols="50" class=" list-group-item-success">lala</textarea></br>
-
-       <input readonly   type="hidden"    id="idCD" class="form-control" >
-      
-      
-        <button  class="btn btn-lg btn-success " type="button  "><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
-  
+          </select>
+        </br>
+         <select id="hora" name="hora" class="list-group-item  list-group-item list-group-item-success form-control">
+                 <?php
+                     foreach ($arrayHora as $hora) 
+                      {
+                         echo "<option value='$hora->id'>$hora->descripcion</option>";
+                       } 
+                 ?>
+          </select>
+        </br>
+        <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
+     
       </form>
+</div>

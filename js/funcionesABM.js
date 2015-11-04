@@ -71,9 +71,12 @@ function GuardarPersona()
 		var direccion=$("#direccion").val();
 		var telefono=$("#telefono").val();
 		var dni=$("#dni").val();
-		var foto=$("#foto").val();
+		var foto = new FormData();
 
-
+		jQuery.each($('#foto')[0].files, function(i, foto) {
+		    foto.append('foto', foto);
+		});
+		//alert(foto);
 		var funcionAjax=$.ajax({
 		url:"nexoABM.php",
 		type:"post",
@@ -132,6 +135,27 @@ function GuardarTurno()
 			medico:medico,
 			date:date,
 			hora:hora
+		}
+	});
+	funcionAjax.done(function(retorno){
+		alert(retorno);
+		Mostrar('altaTurno');
+	});
+	funcionAjax.fail(function(retorno){	
+		alert("Error al ingresar el registro");
+	});	
+}
+	function GuardarReserva(turno,medico,hora)
+	{		
+		var idTurno=turno;
+		var idMedico=medico;
+		var idHora=hora;
+
+		var funcionAjax=$.ajax({
+		url:"nexoABM.php",
+		type:"post",
+		data:{
+			queHacer:"MostrarReserva"
 		}
 	});
 	funcionAjax.done(function(retorno){

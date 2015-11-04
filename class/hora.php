@@ -102,12 +102,13 @@ class hora
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "hora");		
 	}
 
-	public static function TraerUnCd($id) 
+	public static function TraerUnaHoraPorID($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, titel as titulo, interpret as cantante,jahr as año from cds where id = $id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerUnaHoraPorID(:id)");
+			$consulta->bindValue(':id', $id, PDO::PARAM_STR);
 			$consulta->execute();
-			$cdBuscado= $consulta->fetchObject('cd');
+			$cdBuscado= $consulta->fetchObject('hora');
 			return $cdBuscado;				
 
 			
