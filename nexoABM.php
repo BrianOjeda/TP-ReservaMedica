@@ -30,7 +30,7 @@ switch ($queHago) {
 				$persona->foto=$_FILES["foto"]["name"];
 				$persona->Guardar();
 				echo "<script>alert('Persona insertada correctamente');</script>";
-				header("location:baseDatos.html");
+				header("location:baseDatos.php");
 			}
 			
 
