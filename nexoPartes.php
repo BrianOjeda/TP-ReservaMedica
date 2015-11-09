@@ -39,6 +39,9 @@ switch ($queHago) {
 		echo $idMedico."---".$idTurno;
 		include("partes/frmAltaReserva.php");
 		break;
+	case 'VerEnMapa':
+			include("partes/formMapaGoogle.php");
+		break;
 	default:
 		# code...
 		break;
