@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
 <?php
+session_start();
+
 	require_once("class/AccesoDatos.php");
 	require_once("class/especialidad.php");
 	require_once("class/medico.php");
@@ -9,6 +11,7 @@
 
 	$arrayMedico=medico::TraerTodosLosMedicos();
 	$arrayTurno=turno::TraerTodosLosTurnos();
+
  ?>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
@@ -26,11 +29,13 @@
 <body onload="botonesPrincipales()">
 	<div class="background">
 		<div class="page">
-			<a href="home.html" id="logo">Pediatria</a>
+			<a href="index.php" id="logo">Pediatria</a>
 			<div id="botones" class="sidebar">
 				
 			</div>
-			<div class="body">
+			<?php if(isset($_SESSION['registrado']))
+			{ ?>
+			<div class="body" id="body" name="body">
 				<div class="programs">
 					<div>
 						<div>
@@ -97,9 +102,15 @@
 					</div>
 				</div>
 			</div>
+			<?php 	}else	{
+		echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
+	}?>
 			<div class="footer">
 				
 			</div>
 	</div>
+	
+
+	 
 </body>
 </html>

@@ -18,12 +18,13 @@
 	<div class="background">
 		<div class="page">
 			
-			<a href="home.html" id="logo">Pediatria</a>
+			<a href="index.php" id="logo">Login</a>
 
 				<div id="botones" class="sidebar">
-				
+
 				</div>
 			<div class="body">
+				<div class="about"><h1>Bienvenido</h1></div>
 				<?php 
  
 					session_start();
@@ -31,7 +32,7 @@
 							<div class="wrapper">
 							
 										<div class="container">
-											<h1>Bienvenido</h1>
+											
 													
 											<form class="form">
 													<input type="email" id="correo" placeholder="Ingrese su Email">

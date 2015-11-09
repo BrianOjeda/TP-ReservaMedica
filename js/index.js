@@ -28,13 +28,13 @@
         		if(respuesta=="correcto")
         		{
 					//$("#MensajeError").val("");
-					window.location.href="http://localhost/ReservaMedica/home.php"; 			// vamos al menu
+					window.location.href="index.php"; 			// vamos al menu
 					alert("Usuario correcto, bienvenido");
         		}
         		else
         		{
         			alert(respuesta);
-        			window.location.href = "http://localhost/ReservaMedica/home.php";
+        			window.location.href = "login.php";
         			
         		}
 		});

@@ -36,6 +36,7 @@ switch ($queHago) {
 	case 'altaReserva':
 		$idMedico=$_POST['medico'];
 		$idTurno=$_POST['turno'];
+		echo $idMedico."---".$idTurno;
 		include("partes/frmAltaReserva.php");
 		break;
 	default:

@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 29-10-2015 a las 05:54:22
+-- Tiempo de generación: 09-11-2015 a las 04:15:32
 -- Versión del servidor: 5.6.24
 -- Versión de PHP: 5.6.8
 
@@ -69,12 +69,16 @@ select idPersona as id,nombre as nombre,apellido as apellido,direccion as direcc
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerTodosLosMedicos`()
     NO SQL
-select m.idMedico as id,p.nombre as nombre,p.apellido as apellido,e.descripcion as especialidad 
+select m.idMedico as id,p.nombre as nombre,p.apellido as apellido,e.descripcion as especialidad,p.foto as foto 
 from medico m join persona p on(m.idPersona=p.idPersona) join especialidad e on(m.idEspecialidad=e.idEspecialidad)$$
 
 CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerTodosLosTurnos`()
     NO SQL
-select t.idTurno as id,t.idMedico,t.idDate,t.idhora from turno_medico t$$
+select t.idTurno as id,t.idMedico as idMedico,t.idDate as idDate,t.idhora as idHora from turno_medico t$$
+
+CREATE DEFINER=`root`@`localhost` PROCEDURE `TraerUnaHoraPorID`(IN `id` VARCHAR(50))
+    NO SQL
+SELECT h.descripcion from hora h where h.idhora=id$$
 
 DELIMITER ;
 
@@ -5311,7 +5315,7 @@ CREATE TABLE IF NOT EXISTS `medico` (
   `idMedico` int(11) NOT NULL,
   `idEspecialidad` int(11) NOT NULL,
   `idPersona` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `medico`
@@ -5321,7 +5325,12 @@ INSERT INTO `medico` (`idMedico`, `idEspecialidad`, `idPersona`) VALUES
 (1, 3, 1),
 (2, 4, 1),
 (3, 3, 8),
-(4, 4, 8);
+(4, 4, 8),
+(5, 3, 17),
+(6, 3, 14),
+(7, 3, 20),
+(8, 3, 18),
+(9, 3, 21);
 
 -- --------------------------------------------------------
 
@@ -5357,15 +5366,21 @@ CREATE TABLE IF NOT EXISTS `persona` (
   `direccion` varchar(100) NOT NULL,
   `telefono` int(11) NOT NULL,
   `foto` varchar(50) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=22 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `persona`
 --
 
 INSERT INTO `persona` (`idPersona`, `nombre`, `apellido`, `dni`, `direccion`, `telefono`, `foto`) VALUES
-(1, 'Brian', 'Ojeda', 37433288, 'bouchard 2635', 42328415, ''),
-(8, 'asda', 'asdasd', 23423, 'asdasdasd', 3423232, 'C:\\fakepath\\Koala.jpg');
+(14, 'asdasd', 'asdasd', 345345, 'asdasd', 34534, 'Lighthouse.jpg'),
+(15, 'asdasd', 'asdasd', 345345, 'asdasd', 34534, 'Lighthouse.jpg'),
+(16, 'asdasd', 'asdasd', 345345, 'asdasd', 34534, 'Lighthouse.jpg'),
+(17, 'Brian', 'ojeda', 37433288, 'bouchard 2635', 42328415, 'anto.jpg'),
+(18, 'luis', 'andaur', 423422, 'remedio escalada', 23423423, 'Koala.jpg'),
+(19, 'rodrigo', 'poclava', 2352352, 'moron', 4234, 'Koala.jpg'),
+(20, 'jesica', 'nocera', 23423, 'candelaria', 43534, 'Chrysanthemum.jpg'),
+(21, 'otroDoctor', 'Longaniza', 23423, 'ezeiza', 2342342, 'Lighthouse.jpg');
 
 -- --------------------------------------------------------
 
@@ -5376,6 +5391,7 @@ INSERT INTO `persona` (`idPersona`, `nombre`, `apellido`, `dni`, `direccion`, `t
 CREATE TABLE IF NOT EXISTS `reserva` (
   `idReserva` int(11) NOT NULL,
   `idObraSocial` int(11) NOT NULL,
+  `idSexo` int(11) NOT NULL,
   `idTurno` int(11) NOT NULL,
   `historiaClinica` varchar(500) NOT NULL,
   `motivoTurno` varchar(500) NOT NULL,
@@ -5392,6 +5408,19 @@ CREATE TABLE IF NOT EXISTS `reserva` (
 CREATE TABLE IF NOT EXISTS `sexo` (
   `idSexo` int(11) NOT NULL,
   `descripcion` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `sucesos_medicos`
+--
+
+CREATE TABLE IF NOT EXISTS `sucesos_medicos` (
+  `idSucesos` int(11) NOT NULL,
+  `fractura` varchar(50) NOT NULL,
+  `acb` varchar(50) NOT NULL,
+  `trastorno` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -5416,17 +5445,21 @@ CREATE TABLE IF NOT EXISTS `turno_medico` (
   `idMedico` int(11) NOT NULL,
   `idDate` int(11) NOT NULL,
   `idhora` int(11) NOT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=latin1;
 
 --
 -- Volcado de datos para la tabla `turno_medico`
 --
 
 INSERT INTO `turno_medico` (`idTurno`, `idMedico`, `idDate`, `idhora`) VALUES
-(1, 1, 666, 1),
-(2, 2, 666, 1),
-(3, 3, 666, 1),
-(4, 1, 666, 3);
+(11, 1, 666, 5),
+(12, 2, 666, 5),
+(13, 3, 666, 5),
+(14, 1, 671, 8),
+(15, 3, 666, 5),
+(16, 5, 672, 5),
+(17, 1, 672, 9),
+(18, 1, 672, 9);
 
 -- --------------------------------------------------------
 
@@ -5446,7 +5479,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
 --
 
 INSERT INTO `usuario` (`id`, `user`, `pass`, `idTipoUsuario`) VALUES
-(1, '@brian', 'ojeda', 0);
+(1, '@brian', 'd7fa3da13bd3e4e05f09ab246e732c3c', 0);
 
 --
 -- Índices para tablas volcadas
@@ -5501,6 +5534,12 @@ ALTER TABLE `sexo`
   ADD PRIMARY KEY (`idSexo`);
 
 --
+-- Indices de la tabla `sucesos_medicos`
+--
+ALTER TABLE `sucesos_medicos`
+  ADD PRIMARY KEY (`idSucesos`);
+
+--
 -- Indices de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
@@ -5536,7 +5575,7 @@ ALTER TABLE `hora`
 -- AUTO_INCREMENT de la tabla `medico`
 --
 ALTER TABLE `medico`
-  MODIFY `idMedico` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `idMedico` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=10;
 --
 -- AUTO_INCREMENT de la tabla `obrasocial`
 --
@@ -5546,7 +5585,7 @@ ALTER TABLE `obrasocial`
 -- AUTO_INCREMENT de la tabla `persona`
 --
 ALTER TABLE `persona`
-  MODIFY `idPersona` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=9;
+  MODIFY `idPersona` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=22;
 --
 -- AUTO_INCREMENT de la tabla `reserva`
 --
@@ -5558,6 +5597,11 @@ ALTER TABLE `reserva`
 ALTER TABLE `sexo`
   MODIFY `idSexo` int(11) NOT NULL AUTO_INCREMENT;
 --
+-- AUTO_INCREMENT de la tabla `sucesos_medicos`
+--
+ALTER TABLE `sucesos_medicos`
+  MODIFY `idSucesos` int(11) NOT NULL AUTO_INCREMENT;
+--
 -- AUTO_INCREMENT de la tabla `tipo_usuario`
 --
 ALTER TABLE `tipo_usuario`
@@ -5566,7 +5610,7 @@ ALTER TABLE `tipo_usuario`
 -- AUTO_INCREMENT de la tabla `turno_medico`
 --
 ALTER TABLE `turno_medico`
-  MODIFY `idTurno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=5;
+  MODIFY `idTurno` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=19;
 --
 -- AUTO_INCREMENT de la tabla `usuario`
 --

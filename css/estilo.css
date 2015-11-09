@@ -93,7 +93,7 @@ border-radius: 15px;
 }
 
 .CajaInicio h1{
-  background:rgb(14, 26, 112);; 
+  background:#126663; 
   padding:20px 0;
   font-size:140%;
   font-weight:300;
@@ -267,8 +267,13 @@ position: absolute;
   background:red;
 }
 
-
-
+h4,h6 {
+    color:#126663;
+}
+.colorBoton
+{
+  background:#126663;
+}
 /*
 .CajaUno h1{
   background:#f50056; 

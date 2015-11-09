@@ -46,9 +46,7 @@ function Mostrar(queMostrar)
 function Reserva(turno,medico,hora)
 {
 		//alert(queMostrar);
-		var idTurno=turno;
-		var idMedico=medico;
-		var idHora=hora;
+		
 
 	var funcionAjax=$.ajax({
 		url:"nexoPartes.php",
@@ -60,12 +58,17 @@ function Reserva(turno,medico,hora)
 				}
 	});
 	funcionAjax.done(function(retorno){
-		$("#principal").html(retorno+"?idMedico=$idMedico&idTurno=$idTurno");
+		//alert(retorno);
+		$("#body").html(retorno);
+		//$("#idCD").val(cd.id);
+		//$("#cantante").val(cd.cantante);
+		//$("#titulo").val(cd.titulo);
+		//$("#anio").val(cd.año);
 		//alert(retorno);
 		//$("#informe").html("<img src='imagenes/data_entry.png' />");	
 	});
 	funcionAjax.fail(function(retorno){
-		$("#principal").html("Error!! :(");
+		$("#page").html("Error!! :(");
 		//$("#informe").html("<img src='imagenes/data_entry.png' />");	
 	});
 	funcionAjax.always(function(retorno){

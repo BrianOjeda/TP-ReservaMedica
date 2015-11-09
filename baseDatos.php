@@ -14,10 +14,12 @@
 <body onload="botonesPrincipales()">
 	<div class="background">
 		<div class="page">
-			<a href="index.html" id="logo">Pediatria</a>
+			<a href="index.php" id="logo">Pediatria</a>
 			<div id="botones" class="sidebar">
 				
 			</div>
+			<?php if(isset($_SESSION['registrado']))
+			{ ?>
 			<div class="body">
 				<div class="programs">
 					<div id="principal">
@@ -46,6 +48,9 @@
 					</div>
 				</div>
 			</div>
+			<?php 	}else	{
+		echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
+		}?>
 			<div class="footer">
 				
 			</div>

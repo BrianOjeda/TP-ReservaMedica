@@ -9,7 +9,7 @@
 <body>
 	<div class="background">
 		<div class="page">
-			<a href="index.html" id="logo">psychotherapy Hospital</a>
+			<a href="index.php" id="logo">psychotherapy Hospital</a>
 			<div class="sidebar">
 				<ul>
 					<li>
@@ -189,7 +189,5 @@
 					&#169; Copyright 2012. All rights reserved
 				</p>
 			</div>
-		</div>
-	</div>
 </body>
 </html>
