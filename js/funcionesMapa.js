@@ -1,12 +1,13 @@
 function VerEnMapa()
 {
    
-    var dire="Gral. Rodríguez 158";
+    var dire="Gral. Rodriguez 158";
     var loc="Monte Grande";
     var prov="Buenos Aires";
-     alert(prov + dire +  loc);
-    var punto = dire +", " +  loc  +", " +  prov +", Argentina";
-    console.log(punto);
+     //alert(prov + dire +  loc);
+    var punto = dire + " , " +  loc  +" , " +  prov + " , Argentina";
+    alert(punto);
+    //console.log(punto);
     var funcionAjax=$.ajax({
     url:"nexoPartes.php",
     type:"post",
@@ -17,8 +18,8 @@ function VerEnMapa()
     funcionAjax.done(function(retorno){
       //alert(retorno);
     $("#principal").html(retorno);
-        $("#punto").val(punto);
-         $("#id").val(id);
+       // $("#punto").val(punto);
+        // $("#id").val(id);
     
   });
 }

@@ -4,13 +4,13 @@
   require("class/medico.php"); 
   require("class/date.php");
  require("class/obraSocial.php");
-
+require("class/edad.php");
 
   $arrayMedico=medico::TraerTodosLosMedicos();
   $arrayDate=date::TraerTodasLasFechas();
   $arrayHora=hora::TraerTodasLasHoras();
   $arrayObraSocial=obraSocial::TraerObraSociales();
-
+  $arrayEdades=edad::TraerEdades();
  
  ?>
 
@@ -66,14 +66,40 @@
           </tr>
          </table>
           <br>
-            <select id="medico" name="medico" class="list-group-item  list-group-item list-group-item-success form-control">
+          <h4>Edad del paciente</h4>
+            <select id="edad" name="edad" class="list-group-item  list-group-item list-group-item-success form-control">
                    <?php
-                       foreach ($arrayObraSocial as $obra) 
+                       foreach ($arrayEdades as $edad) 
                         {
-                           echo "<option value='$obra->id'>$obra->descripcion</option>";
+                           echo "<option value='$edad->id'>$edad->descripcion</option>";
                         } 
                    ?>
             </select>
+            <br>
+             <h4>Estuvo internado...</h4>
+             <table>
+              <tr>
+                <td>
+                   <h6>En este hospital&nbsp;&nbsp;<input type="checkbox" name="hospital" id="hospital" value="1">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+                </td>
+                <td>
+                  <h6>En otro hospital &nbsp;&nbsp;<input type="checkbox" name="otroHospital" id="otroHospital" value="2">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</h6>
+                </td>
+               
+              </tr>
+             </table>
+              <br>
+          <h4>Seleccione...</h4>
+            <select id="area" name="area" class="list-group-item  list-group-item list-group-item-success form-control">
+               <option value='$edad->id'>Agregar historia clinica</option>
+               <option value='$edad->id'>No Agregar</option> 
+            </select>
+            <br>
+            <textarea class="form-control">
+            </textarea>
+            <br>
+            <br>
+            <br>
         <button  class="btn btn-lg colorBoton btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
      
       </form>
