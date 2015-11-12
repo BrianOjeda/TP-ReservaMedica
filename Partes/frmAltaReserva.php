@@ -17,9 +17,9 @@ require("class/edad.php");
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Reserva</h1>
 			<!--  -->
-	 <form class="form-ingreso" onsubmit="GuardarTurno();return false" enctype="multipart/form-data">
+	 <form class="form-ingreso" onsubmit="GuardarReserva();return false" enctype="multipart/form-data">
         <h4>Obras sociales disponibles</h4>
-           <select id="medico" name="medico" class="list-group-item  list-group-item list-group-item-success form-control">
+           <select id="obra" name="obra" class="list-group-item  list-group-item list-group-item-success form-control">
                    <?php
                        foreach ($arrayObraSocial as $obra) 
                         {
@@ -95,11 +95,12 @@ require("class/edad.php");
                <option value='$edad->id'>No Agregar</option> 
             </select>
             <br>
-            <textarea class="form-control">
+            <textarea class="form-control" id="historia" name="historia">
             </textarea>
             <br>
             <br>
             <br>
+            <input type="hidden" id="turno" name="turno">
         <button  class="btn btn-lg colorBoton btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
      
       </form>

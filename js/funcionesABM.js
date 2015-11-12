@@ -145,22 +145,48 @@ function GuardarTurno()
 		alert("Error al ingresar el registro");
 	});	
 }
-	function GuardarReserva(turno,medico,hora)
+	function GuardarReserva()
 	{		
-		var idTurno=turno;
-		var idMedico=medico;
-		var idHora=hora;
+		var obra=$("#obra").val();
+		var sexo=$("#sexo").val()
+		var titular=$("#titular").val()
+
+		var fractura=$('#fractura').is(':checked');
+		var acb=$('#acb').is(':checked');
+		var trastorno=$('#trastorno').is(':checked');
+
+		var edad=$("#edad").val()
+		var hospital=$('#hospital').is(':checked');
+		var otroHospital=$('#otroHospital').is(':checked');
+		var historia=$("#historia").val()
+		var turno=$("#turno").val()
+
+		//alert("obraSocial:"+obra+"--Sexo:"+sexo+"--titular:"+titular+"--fractura:"+fractura+"--abc:"+abc+"---trastorno:"+trastorno+"---edad:"+edad+"--hospital:"+hospital+"---otroHospital:"+otroHospital+"---historia:"+historia+"--turno:"+turno);
+
+	
+
 
 		var funcionAjax=$.ajax({
 		url:"nexoABM.php",
 		type:"post",
 		data:{
-			queHacer:"MostrarReserva"
+			queHacer:"GuardarReserva",
+			obra:obra,
+			sexo:sexo,
+			titular:titular,
+			fractura:fractura,
+			acb:acb,
+			trastorno:trastorno,
+			edad:edad,
+			hospital:hospital,
+			otroHospital:otroHospital,
+			historia:historia,
+			turno:turno
 		}
 	});
 	funcionAjax.done(function(retorno){
 		alert(retorno);
-		Mostrar('altaTurno');
+		Mostrar('altaReserva');
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error al ingresar el registro");

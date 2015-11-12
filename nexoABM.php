@@ -4,18 +4,31 @@ require_once("class/persona.php");
 require_once("class/especialidad.php");
 require_once("class/medico.php");
 require_once("class/turno.php");
+require_once("class/reservar.php");
+require_once("class/sucesos.php");
 
 
-$queHago=$_POST['queHacer'];
+	$queHago=$_POST['queHacer'];
+	$obra=$_POST['obra'];
+	$sexo=$_POST['sexo'];
+	$titular=$_POST['titular'];
+	$fractura=$_POST['fractura'];
+	$acb=$_POST['acb'];
+	$trastorno=$_POST['trastorno'];
+	$edad=$_POST['edad'];
+	$hospital=$_POST['hospital'];
+	$otroHospital=$_POST['otroHospital'];
+	$historia=$_POST['historia'];
+	$turno=$_POST['turno'];
+
+	$suceso=new sucesos();
+	$suceso->trastorno=$trastorno;
+	$suceso->acb=$acb;
+	$suceso->fractura=$fractura;
+	$sus=$suceso->Insertar();
 
 switch ($queHago) {
-	case 'BorrarCD':
-			$cd = new cd();
-			$cd->id=$_POST['id'];
-			$cantidad=$cd->BorrarCd();
-			echo $cantidad;
-
-		break;
+	
 	case 'GuardarPersona':
 			$destino="fotos/".$_FILES["foto"]["name"];
 		
@@ -55,6 +68,21 @@ switch ($queHago) {
 			$turno->idHora=$_POST['hora'];
 			$turno->Guardar();
 			echo "turno insertado correctamente";
+		break;	
+		case 'GuardarReserva':
+			$reservar=new reservar();
+			$reservar->obraSocial=$obra;
+		 	$reservar->sexo=$sexo;
+		 	$reservar->turno=$turno;
+		 	$reservar->historia=$historia;
+		 	$reservar->titular=$titular;
+		 	$reservar->edad=$edad;
+		 	$reservar->suceso=$sus;
+		 	$reservar->internadoHospital=$hospital;
+		 	$reservar->otroHospital=$otroHospital;
+		 	echo $obra."--".$sexo."--".$turno."--".$historia."--".$titular."---".$edad."--".$sus."--".$hospital."---".$otroHospital."---";
+		 	$aux=$reservar->Insertar();
+			echo "Insertado correctamente";
 		break;	
 	default:
 		# code...

@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
+<?php require_once "class/usuario.php";
+session_start();  
+?>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
@@ -18,8 +21,15 @@
 			<div id="botones" class="sidebar">
 				
 			</div>
-			<?php if(isset($_SESSION['registrado']))
-			{ ?>
+			<?php 
+
+			if(isset($_SESSION['registrado']))
+			{ 
+				$tipo=usuario::traerTipoUsuario($_SESSION['registrado']);
+				if("admin"==$tipo) {
+					
+				
+				?>
 			<div class="body">
 				<div class="programs">
 					<div id="principal">
@@ -48,7 +58,8 @@
 					</div>
 				</div>
 			</div>
-			<?php 	}else	{
+			<?php }else{ echo "<h4 class='glyphicon'>No tiene permisos para entrar en esta pagina</h4>";} 
+				}else	{
 		echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
 		}?>
 			<div class="footer">

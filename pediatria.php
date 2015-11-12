@@ -87,7 +87,7 @@ session_start();
 															echo" </select>
 															</td>";
 															echo "<td><img  class='fotoGrilla' src='fotos/$medico->foto'</td>";
-															echo "<td><input type='button' value='Reservar' onclick=".'"Reserva('."'$idTurno','$medico->id','$idHora')".'">';
+															echo "<td><input type='button' value='Reservar' onclick=".'"Reserva('."'$idTurno')".'">';
 															echo"</td>
 															</tr>";
 													}

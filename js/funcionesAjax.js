@@ -43,24 +43,24 @@ function Mostrar(queMostrar)
 
 	});
 }
-function Reserva(turno,medico,hora)
+function Reserva(turno)
 {
 		//alert(queMostrar);
 		
-
+		var turno=turno;
+		alert(turno);
 	var funcionAjax=$.ajax({
 		url:"nexoPartes.php",
 		type:"post",
 		data:{
-			  queHacer:"altaReserva",
-			  turno:turno,
-			  medico:medico
+			  queHacer:"altaReserva"
+	
 				}
 	});
 	funcionAjax.done(function(retorno){
 		//alert(retorno);
 		$("#body").html(retorno);
-		//$("#idCD").val(cd.id);
+		$("#turno").val(turno);
 		//$("#cantante").val(cd.cantante);
 		//$("#titulo").val(cd.titulo);
 		//$("#anio").val(cd.año);
@@ -83,7 +83,7 @@ function deslogear()
 		type:"post"		
 	});
 	funcionAjax.done(function(retorno){
-		window.location.href = "http://localhost/ReservaMedica/home.php";
+		window.location.href = "index.php";
 			
 	});	
 }

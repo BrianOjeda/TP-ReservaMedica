@@ -1,5 +1,5 @@
 
-
+<?php require "class/usuario.php"; ?>
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -23,12 +23,13 @@
 				<div id="botones" class="sidebar">
 
 				</div>
-			<div class="body">
-				<div class="about"><h1>Bienvenido</h1></div>
-				<?php 
+					<?php 
  
 					session_start();
 					if(!isset($_SESSION['registrado'])){  ?>
+			<div class="body">
+				<div class="about"><h1>Bienvenido</h1></div>
+			
 							<div class="wrapper">
 							
 										<div class="container">
@@ -59,7 +60,8 @@
 						<script src="js/index.js"></script>	
 	<?php }
 	else{    
-			echo"<h3>usted '".$_SESSION['registrado']."' esta logeado. </h3>";?>         
+			$usuario=usuario::traerUsuario($_SESSION['registrado']);
+			echo"<h3>usted ----- '".$usuario->user."'----  esta logeado. </h3>";?>         
     		
     		<button onclick="deslogear()" class="btn btn-lg btn-danger btn-block" type="button"><span class="glyphicon glyphicon-off">&nbsp;</span>Deslogearme</button>
  			 <?php  }  ?>

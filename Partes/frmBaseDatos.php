@@ -1,6 +1,7 @@
 <script type="text/javascript" src="./bower_components/jquery/dist/jquery.js"></script>
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
-<?php require_once"partes/referencias.php" ;?>
+<?php require_once"partes/referencias.php" ;
+?>
 <link rel="stylesheet" type="text/css" href="default.css">	
 <div class="CajaInicio animated bounceInRight">
 
