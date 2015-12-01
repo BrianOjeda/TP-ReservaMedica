@@ -43,18 +43,17 @@ function Mostrar(queMostrar)
 
 	});
 }
-function Reserva(turno)
+function Reserva(tur)
 {
 		//alert(queMostrar);
 		
-		var turno=turno;
-		alert(turno);
+		var turno=tur;
+		//alert(turno);
 	var funcionAjax=$.ajax({
 		url:"nexoPartes.php",
 		type:"post",
 		data:{
 			  queHacer:"altaReserva"
-	
 				}
 	});
 	funcionAjax.done(function(retorno){
@@ -86,6 +85,30 @@ function deslogear()
 		window.location.href = "index.php";
 			
 	});	
+}
+function buscarPersona()
+{
+		//alert(queMostrar);
+	var dni=$("#dni").val();
+	var funcionAjax=$.ajax({
+		url:"nexoABM.php",
+		type:"post",
+		data:{queHacer:"buscarPersona",
+			  dni:dni}
+	});
+	funcionAjax.done(function(retorno){
+		$("#registrado").html(retorno);
+			//alert(retorno);
+		//$("#informe").html("<img src='imagenes/data_entry.png' />");	
+	});
+	funcionAjax.fail(function(retorno){
+		$("#principal").html("Error!! :(");
+		//$("#informe").html("<img src='imagenes/data_entry.png' />");	
+	});
+	funcionAjax.always(function(retorno){
+		//alert("siempre "+retorno.statusText);
+
+	});
 }
 //function validarObraSocial()
 //{

@@ -1,29 +1,19 @@
 <!DOCTYPE html>
 <!-- Website template by freewebsitetemplates.com -->
-<?php
-session_start();
-
- ?>
+<?php require_once "class/usuario.php";
+session_start();  
+?>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
 <script type="text/javascript" src="js/funcionesABM.js"></script>
-<link rel="stylesheet" type="text/css" href="css/estilo.css">
-<link rel="stylesheet" type="text/css" href="css/animacion.css">
-
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Reserva Medica</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css">
-	<!-- Estos archivos son para geolocalizacion -->
-<script type="text/javascript" src="js/geolocalizacionCommon.js"></script>
-<script type="text/javascript" src="js/moduloGeolocalizacion.js"></script>
-<script type="text/javascript" src="js/funcionesMapa.js"></script>
-
 </head>
-<script type="text/javascript">VerEnMapa();</script>
 <body onload="botonesPrincipales()">
 	<div class="background">
 		<div class="page">
@@ -31,36 +21,51 @@ session_start();
 			<div id="botones" class="sidebar">
 				
 			</div>
-			<?php if(isset($_SESSION['registrado']))
-			{ ?>
-			<div class="body" id="body" name="body">
+			<?php 
+
+			if(isset($_SESSION['registrado']))
+			{ 
+				
+					
+				?>
+			<div class="body">
 				<div class="programs">
-					<div>
+					<div id="principal">
+						<div>
 						<div>
 							<div>
-								<h4>Donde encontrarnos...</h4>
-								<h3>En el mapa se puede ver la localizacion de nuestra clinica.</h3>
+								<h3>Porcentajes representado por un graficos torta</h3>
 								
-								
-
+							</div>
+						</div>
+						<div id="principal">
+							<input type="button" id="medico" name="medico" value="Medicos por especialidad" onclick="Mostrar('estadistica')">
+							
+						</div>
+						
+					
+						<div class="section">
+						
+						</div>
+					</div>
 						
 						</div>
 					</div>
 				</div>
-				
 			</div>
-			<div id="principal">
-								     
-				</div>
-			<?php 	}else	{
+			<?php
+				}else	{
 		echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
-	}?>
+		}?>
 			<div class="footer">
-				 
+				<div>
+					
+					
+				</div>
+				<p>
+					&#169; Copyright 2016. All rights reserved
+				</p>
 			</div>
 	</div>
-	
-
-	 
 </body>
 </html>

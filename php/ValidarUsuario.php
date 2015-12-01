@@ -14,7 +14,7 @@ if($usuario->id==null or $usuario->id ==0)
 else
 {
 	session_start(); 
-	echo $id;
+	//echo $id;
 	$_SESSION['registrado']= $usuario->id;
 	echo "correcto";
 }

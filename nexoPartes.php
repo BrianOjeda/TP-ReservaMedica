@@ -5,8 +5,11 @@
 $queHago=$_POST['queHacer'];
 
 switch ($queHago) {
+	case 'estadistica':
+			include("Partes/grafico.php");
+		break;
 	case 'botonesPrincipales':
-			include("Partes/botonesPrincipales.html");
+			include("Partes/botonesPrincipales.php");
 		break;
 	case 'pediatria':
 			include("Partes/frmPediatria.php");

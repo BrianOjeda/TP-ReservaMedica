@@ -17,6 +17,18 @@ require("class/edad.php");
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Reserva</h1>
 			<!--  -->
+    <div id="registrado">
+       
+       <br>
+       <br>
+       <br>
+        &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="dni" name="dni" placeholder="Ingrese el documento del paciente y presione aceptar" >
+        <br>
+       &nbsp;&nbsp;&nbsp;&nbsp; <left><input type="button" value="Aceptar" class="list-group-item-success" onclick="buscarPersona()"></left>
+    </div> 
+
+
+
 	 <form class="form-ingreso" onsubmit="GuardarReserva();return false" enctype="multipart/form-data">
         <h4>Obras sociales disponibles</h4>
            <select id="obra" name="obra" class="list-group-item  list-group-item list-group-item-success form-control">

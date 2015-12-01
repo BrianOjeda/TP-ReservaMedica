@@ -3,7 +3,10 @@
   padding:0;
   border-radius: 10px;
 }
-
+h3
+{
+  color:#126663;
+}
 .table-hover>tbody>tr:hover {
       background-color: #8387F1;
        border-radius: 0px ;

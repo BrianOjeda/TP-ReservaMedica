@@ -14,21 +14,34 @@
   
   <link rel="stylesheet" href="css/styleIndex.css">
 </head>
-<body onload="botonesPrincipales()">
+<body >
 	<div class="background">
 		<div class="page">
 			
 			<a href="index.php" id="logo">Login</a>
 
 				<div id="botones" class="sidebar">
-
+					<ul>
+						<li class="selected">
+							<a href="index.php">Home</a>
+						</li>
+						<li>
+							<a href="login.php">Login</a>
+						</li>
+						<li>
+							<a href="about.php">About</a>
+						</li>
+						<li>
+							<a href="ubicacion.php">Mapa</a>
+						</li>
+				</ul>
 				</div>
 					<?php 
  
 					session_start();
 					if(!isset($_SESSION['registrado'])){  ?>
 			<div class="body">
-				<div class="about"><h1>Bienvenido</h1></div>
+				<div class="programs"><h1>Bienvenido</h1></div>
 			
 							<div class="wrapper">
 							

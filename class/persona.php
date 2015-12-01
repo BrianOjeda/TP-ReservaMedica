@@ -9,71 +9,9 @@ class persona
   	public $dni;
   	public $foto;
 
-  	public function BorrarCd()
-	 {
-	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("
-				delete 
-				from cds 				
-				WHERE id=:id");	
-				$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);		
-				$consulta->execute();
-				return $consulta->rowCount();
-	 }
-
-	public static function BorrarCdPorAnio($año)
-	 {
-
-			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("
-				delete 
-				from cds 				
-				WHERE jahr=:anio");	
-				$consulta->bindValue(':anio',$año, PDO::PARAM_INT);		
-				$consulta->execute();
-				return $consulta->rowCount();
-
-	 }
-	public function ModificarCd()
-	 {
-
-			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("
-				update cds 
-				set titel='$this->titulo',
-				interpret='$this->cantante',
-				jahr='$this->año'
-				WHERE id='$this->id'");
-			return $consulta->execute();
-
-	 }
-	
   
-	 public function InsertarElCd()
-	 {
-				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("INSERT into cds (titel,interpret,jahr)values('$this->titulo','$this->cantante','$this->año')");
-				$consulta->execute();
-				return $objetoAccesoDato->RetornarUltimoIdInsertado();
-				
 
-	 }
-
-	  public function ModificarCdParametros()
-	 {
-			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("
-				update cds 
-				set titel=:titulo,
-				interpret=:cantante,
-				jahr=:anio
-				WHERE id=:id");
-			$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);
-			$consulta->bindValue(':titulo',$this->titulo, PDO::PARAM_INT);
-			$consulta->bindValue(':anio', $this->año, PDO::PARAM_STR);
-			$consulta->bindValue(':cantante', $this->cantante, PDO::PARAM_STR);
-			return $consulta->execute();
-	 }
+	 
 
 	 public function Insertar()
 	 {
@@ -109,12 +47,13 @@ class persona
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "persona");		
 	}
 
-	public static function TraerUnCd($id) 
+	public static function TraerUnaPersona($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, titel as titulo, interpret as cantante,jahr as año from cds where id = $id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idPersona` as id, `nombre` as nombre, `apellido` as apellido, `dni` as dni, `direccion` as direccion, `telefono` as telefono, `foto` as foto FROM `persona` WHERE dni=:id");
+			$consulta->bindValue(':id', $id, PDO::PARAM_STR);
 			$consulta->execute();
-			$cdBuscado= $consulta->fetchObject('cd');
+			$cdBuscado= $consulta->fetchObject('persona');
 			return $cdBuscado;				
 
 			

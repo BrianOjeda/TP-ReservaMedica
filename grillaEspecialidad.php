@@ -11,6 +11,7 @@ session_start();
 
 	$arrayMedico=medico::TraerTodosLosMedicos();
 	$arrayTurno=turno::TraerTodosLosTurnos();
+	$unaEspecialidad=especialidad::TraerEspecialidad($_GET['especialidad']);
 
  ?>
 <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.min.css">
@@ -29,7 +30,7 @@ session_start();
 <body onload="botonesPrincipales()">
 	<div class="background">
 		<div class="page">
-			<a href="index.php" id="logo">Pediatria</a>
+			<a href="index.php" id="logo"><?php echo $unaEspecialidad->descripcion; ?></a>
 			<div id="botones" class="sidebar">
 				
 			</div>
@@ -62,7 +63,8 @@ session_start();
 											 {
 											 	$idTurno=0;
 											 	$idHora=0;
-											 	if($medico->especialidad=="pediatria" )
+											 	
+											 	if($medico->especialidad== $unaEspecialidad->id )
 											 	{
 														echo"
 															<tr>

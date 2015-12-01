@@ -3,12 +3,13 @@
   require("class/hora.php"); 
   require("class/medico.php"); 
   require("class/date.php");
-
+  require("class/especialidad.php");
 
 
   $arrayMedico=medico::TraerTodosLosMedicos();
   $arrayDate=date::TraerTodasLasFechas();
   $arrayHora=hora::TraerTodasLasHoras();
+
  ?>
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Turno</h1>
@@ -19,7 +20,8 @@
                  <?php
                      foreach ($arrayMedico as $medico) 
                       {
-                         echo "<option value='$medico->id'>Nombre:$medico->nombre Apellido: $medico->apellido especialidad:$medico->especialidad </option>";
+                         $especialidad=especialidad::TraerEspecialidad($medico->especialidad);
+                         echo "<option value='$medico->id'>Nombre:$medico->nombre Apellido: $medico->apellido especialidad:$especialidad->descripcion </option>";
                       } 
                  ?>
           </select>

@@ -8,6 +8,10 @@ body {
 a {
 	outline:none;
 }
+h4
+{
+	color:#FFFFFF;
+}
 a img {
 	border:0;
 	display:block;
@@ -17,7 +21,9 @@ a img:hover {
 	opacity:0.8;
 }
 .background {
-	background:url(../images/bg-background.jpg) no-repeat center top;
+	/*background:url(../images/bg-background.jpg) no-repeat center top;*/
+	 background:url(../images/bodyLogin2.jpg) no-repeat center top;
+	 /*luisPETE*/
 }
 p a:hover {
 	color:#388070!important;

@@ -127,6 +127,8 @@ function GuardarTurno()
 		var medico=$("#medico").val();
 		var date=$("#date").val();
 		var hora=$("#hora").val();
+
+		alert(medico);
 		var funcionAjax=$.ajax({
 		url:"nexoABM.php",
 		type:"post",
@@ -148,8 +150,9 @@ function GuardarTurno()
 	function GuardarReserva()
 	{		
 		var obra=$("#obra").val();
-		var sexo=$("#sexo").val()
-		var titular=$("#titular").val()
+
+		var sexo=$('input:radio[name=sexo]:checked').val();
+		var titular=$('input:radio[name=titular]:checked').val();
 
 		var fractura=$('#fractura').is(':checked');
 		var acb=$('#acb').is(':checked');

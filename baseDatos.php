@@ -52,6 +52,10 @@ session_start();
 							    <a onclick="Mostrar('altaTurno')" class="list-group-item  list-group-item list-group-item-success">
 								 <h4 class="list-group-item-heading">Agregar  turno</h4>
 							  </a>
+							  </a>
+							    <a onclick="Mostrar('altaTurno')" class="list-group-item  list-group-item list-group-item-success">
+								 <h4 class="list-group-item-heading">Mostrar todas las reservas disponibles</h4>
+							  </a>
 							</div>
 						
 						</div>
