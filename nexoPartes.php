@@ -36,6 +36,9 @@ switch ($queHago) {
 	case 'altaTurno':
 		include("partes/frmAltaTurno.php");
 		break;
+	case 'grillaReserva':
+		include("partes/frmGrillaReserva.php");
+		break;
 	case 'altaReserva':
 		$idMedico=$_POST['medico'];
 		$idTurno=$_POST['turno'];

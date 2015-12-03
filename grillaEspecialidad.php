@@ -96,6 +96,9 @@ session_start();
 												}
 											
 												 ?>
+												 <tr>
+												 <td><input type='button' value='Reservar' onclick="Reserva('1')">
+												 </tr>
 										</tbody>
 								</table>
 							</div>

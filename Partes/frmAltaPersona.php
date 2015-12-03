@@ -3,11 +3,14 @@
  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
 <script type="text/javascript" src="js/funcionesABM.js"></script>
-
+ <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="js/jquery.form.js"></script>
+  <script src="js/jquery.validate.js"></script>
+  <script src="js/jsRegistroJquery.js"></script>
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Persona</h1>
 			<!--  -->
-	 <form class="form-ingreso" action="nexoABM.php" enctype="multipart/form-data" method="post">
+	 <form class="form-ingreso"  enctype="multipart/form-data" method="post" id="frmAltaPersona">
        
         <label for="Nombre" class="sr-only">Nombre</label>
         <input type="text"  minlength="1"  id="nombre" name="nombre" title="Se necesita un nombre" class="form-control" placeholder="Nombre" required="" autofocus="">
@@ -19,8 +22,9 @@
         <input type="number"   minlength="1" title="Se necesita un Telefono"  id="telefono" name="telefono"class="form-control" placeholder="Telefono" required="" autofocus="">
         <label for="Dni" class="sr-only">Dni</label>
         <input type="number"   minlength="1" title="Se necesita un dni"  id="dni" name="dni" class="form-control" placeholder="Dni" required="" autofocus="">
-         <label for="Foto" class="sr-only">Foto</label>
-         <input type="file" name="foto" id="foto" />   
+        <p>Foto<input class="form-control btn btn-info"  name="fichero" type="file" id="fichero"></p>
+          <span id="error" class='error1' style="display: none;"></span>
+         <p>Preview</p><img  name="imagen" id="imagen" src="" alt="Imagen aqui" width="280" height="250">   
        <input type="hidden" name="queHacer" id="queHacer" value="GuardarPersona" /> 
         <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
      

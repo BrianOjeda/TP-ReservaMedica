@@ -35,6 +35,14 @@
 
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
+	 	public static function TraerTodasLasReservas()
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idReserva` as id, `idObraSocial` as obraSocial,
+			 `idTurno` as turno, `historiaClinica` as historia, `motivoTurno`, `titular` as titular, `resena` FROM `reserva` ");
+			$consulta->execute();			
+			return $consulta->fetchAll(PDO::FETCH_CLASS, "reservar");		
+	}
 
 	
  } 

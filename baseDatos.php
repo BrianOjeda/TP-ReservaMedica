@@ -23,10 +23,10 @@ session_start();
 			</div>
 			<?php 
 
-			if(isset($_SESSION['registrado']))
-			{ 
-				$tipo=usuario::traerTipoUsuario($_SESSION['registrado']);
-				if("admin"==$tipo) {
+			//if(isset($_SESSION['registrado']))
+			//{ 
+			//	$tipo=usuario::traerTipoUsuario($_SESSION['registrado']);
+			//	if("admin"==$tipo) {
 					
 				
 				?>
@@ -53,7 +53,7 @@ session_start();
 								 <h4 class="list-group-item-heading">Agregar  turno</h4>
 							  </a>
 							  </a>
-							    <a onclick="Mostrar('altaTurno')" class="list-group-item  list-group-item list-group-item-success">
+							    <a onclick="Mostrar('grillaReserva')" class="list-group-item  list-group-item list-group-item-success">
 								 <h4 class="list-group-item-heading">Mostrar todas las reservas disponibles</h4>
 							  </a>
 							</div>
@@ -62,10 +62,10 @@ session_start();
 					</div>
 				</div>
 			</div>
-			<?php }else{ echo "<h4 class='glyphicon'>No tiene permisos para entrar en esta pagina</h4>";} 
-				}else	{
-		echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
-		}?>
+			<?php //}else{ echo "<h4 class='glyphicon'>No tiene permisos para entrar en esta pagina</h4>";} 
+				//}else	{
+		//echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
+		//}?>
 			<div class="footer">
 				
 			</div>

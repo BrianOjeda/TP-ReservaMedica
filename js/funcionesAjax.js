@@ -97,7 +97,8 @@ function buscarPersona()
 			  dni:dni}
 	});
 	funcionAjax.done(function(retorno){
-		$("#registrado").html(retorno);
+
+		$("#registrado").html("<h3>Debe registrarse</h3>"+retorno);
 			//alert(retorno);
 		//$("#informe").html("<img src='imagenes/data_entry.png' />");	
 	});

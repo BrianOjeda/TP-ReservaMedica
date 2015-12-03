@@ -6,11 +6,11 @@
  require("class/obraSocial.php");
 require("class/edad.php");
 
-  $arrayMedico=medico::TraerTodosLosMedicos();
-  $arrayDate=date::TraerTodasLasFechas();
-  $arrayHora=hora::TraerTodasLasHoras();
-  $arrayObraSocial=obraSocial::TraerObraSociales();
-  $arrayEdades=edad::TraerEdades();
+ // $arrayMedico=medico::TraerTodosLosMedicos();
+  //$arrayDate=date::TraerTodasLasFechas();
+  //$arrayHora=hora::TraerTodasLasHoras();
+  //$arrayObraSocial=obraSocial::TraerObraSociales();
+  //$arrayEdades=edad::TraerEdades();
  
  ?>
 

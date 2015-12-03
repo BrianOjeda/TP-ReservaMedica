@@ -6,7 +6,7 @@ function VerEnMapa()
     var prov="Buenos Aires";
      //alert(prov + dire +  loc);
     var punto = dire + " , " +  loc  +" , " +  prov + " , Argentina";
-    alert(punto);
+    //alert(punto);
     //console.log(punto);
     var funcionAjax=$.ajax({
     url:"nexoPartes.php",
@@ -18,8 +18,8 @@ function VerEnMapa()
     funcionAjax.done(function(retorno){
       //alert(retorno);
     $("#principal").html(retorno);
-       // $("#punto").val(punto);
-        // $("#id").val(id);
+       $("#punto").val(punto);
+         $("#id").val(id);
     
   });
 }
