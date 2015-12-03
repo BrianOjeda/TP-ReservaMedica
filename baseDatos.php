@@ -8,6 +8,10 @@ session_start();
  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
 <script type="text/javascript" src="js/funcionesABM.js"></script>
+ <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="js/jquery.form.js"></script>
+  <script src="js/jquery.validate.js"></script>
+  <script src="js/jsRegistroJquery.js"></script>
 <html>
 <head>
 	<meta charset="UTF-8">

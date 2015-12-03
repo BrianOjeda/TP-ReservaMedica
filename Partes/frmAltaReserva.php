@@ -17,16 +17,17 @@ require("class/edad.php");
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Reserva</h1>
 			<!--  -->
-    <div id="registrado">
-       
-       <br>
-       <br>
-       <br>
-        &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="dni" name="dni" placeholder="Ingrese el documento del paciente y presione aceptar" >
-        <br>
-       &nbsp;&nbsp;&nbsp;&nbsp; <left><input type="button" value="Aceptar" class="list-group-item-success" onclick="buscarPersona()"></left>
-    </div> 
-
+    <form class="form-ingreso" onsubmit="GuardarPersona();return false">   
+      <div id="registrado">
+         
+         <br>
+         <br>
+         <br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<input type="text" id="dni" name="dni" placeholder="Ingrese el documento del paciente y presione aceptar" >
+          <br>
+         &nbsp;&nbsp;&nbsp;&nbsp; <left><input type="button" value="Aceptar" class="list-group-item-success" onclick="buscarPersona()"></left>
+      </div> 
+    </form>
 
 
 	 <form class="form-ingreso" onsubmit="GuardarReserva();return false" enctype="multipart/form-data">
