@@ -8,10 +8,7 @@ session_start();
  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
 <script type="text/javascript" src="js/funcionesABM.js"></script>
- <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-  <script src="js/jquery.form.js"></script>
-  <script src="js/jquery.validate.js"></script>
-  <script src="js/jsRegistroJquery.js"></script>
+
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -27,10 +24,10 @@ session_start();
 			</div>
 			<?php 
 
-			//if(isset($_SESSION['registrado']))
-			//{ 
-			//	$tipo=usuario::traerTipoUsuario($_SESSION['registrado']);
-			//	if("admin"==$tipo) {
+			if(isset($_SESSION['registrado']))
+			{ 
+				$tipo=usuario::traerTipoUsuario($_SESSION['registrado']);
+				if("admin"==$tipo) {
 					
 				
 				?>
@@ -66,10 +63,10 @@ session_start();
 					</div>
 				</div>
 			</div>
-			<?php //}else{ echo "<h4 class='glyphicon'>No tiene permisos para entrar en esta pagina</h4>";} 
-				//}else	{
-		//echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
-		//}?>
+			<?php }else{ echo "<h4 class='glyphicon'>No tiene permisos para entrar en esta pagina</h4>";} 
+				}else	{
+		echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
+		}?>
 			<div class="footer">
 				
 			</div>

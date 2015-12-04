@@ -91,7 +91,7 @@ session_start();
 																}
 															echo" </select>
 															</td>";
-															echo "<td><img  class='fotoGrilla' src='fotos/$medico->foto'</td>";
+															echo "<td><img  class='fotoGrilla' src='php/fotos/$medico->foto'</td>";
 															echo "<td><input type='button' value='Reservar' onclick=".'"Reserva('."'$idTurno')".'">';
 															echo"</td>
 															</tr>";
@@ -99,9 +99,7 @@ session_start();
 												}
 											
 												 ?>
-												 <tr>
-												 <td><input type='button' value='Reservar' onclick="Reserva('1')">
-												 </tr>
+												 
 										</tbody>
 								</table>
 							</div>

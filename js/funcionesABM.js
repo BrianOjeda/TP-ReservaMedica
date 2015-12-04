@@ -117,16 +117,11 @@ function GuardarPersona()
                alert(msg);
     		        var strIndex = msg.indexOf('Error');
                     if(strIndex == -1) {
-                        //string no encontrado
-        		        //$("#mensaje").html(msg + "<br><strong>Persona insertada correctamente!</strong>");
-        		        //$("#mensaje").show();
+                
                         alert("Persona insertada correctamente");
-    					$("#registrado").html("<h3>Ya esta registrado</h3>");
-        				//setTimeout(function() {
-        				  //  $('#mensaje').fadeOut('fast');
-        				   // window.location.href="menu.php";
-        				    
-        				//}, 2500);
+    					//$("#registrado").html("<h3>Ya esta registrado</h3>");
+    					$("#idPersona").val(punto);
+       
                     }
                    else
                     {
@@ -135,7 +130,7 @@ function GuardarPersona()
     			});//fin done
     	    }
 		    });
-		});
+		//});
 
 }
 function cargar(){
@@ -239,6 +234,8 @@ function GuardarTurno()
 		var historia=$("#historia").val()
 		var turno=$("#turno").val()
 
+		var persona=$("#idPersona").val()
+
 		//alert("obraSocial:"+obra+"--Sexo:"+sexo+"--titular:"+titular+"--fractura:"+fractura+"--abc:"+abc+"---trastorno:"+trastorno+"---edad:"+edad+"--hospital:"+hospital+"---otroHospital:"+otroHospital+"---historia:"+historia+"--turno:"+turno);
 
 	
@@ -259,7 +256,8 @@ function GuardarTurno()
 			hospital:hospital,
 			otroHospital:otroHospital,
 			historia:historia,
-			turno:turno
+			turno:turno,
+			persona:persona
 		}
 	});
 	funcionAjax.done(function(retorno){

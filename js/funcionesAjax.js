@@ -98,7 +98,17 @@ function buscarPersona()
 	});
 	funcionAjax.done(function(retorno){
 
-		$("#registrado").html("<h3>Debe registrarse</h3>"+retorno);
+		if (retorno=="noregistrado")
+		 {
+		 	$("#registrado").html("<h3>Debe registrarse</h3>");
+		 	$("#registrado").html(Mostrar("altaPersona"));
+		 }
+		 else
+		 {
+		 	$("#registrado").html("<h3>Esta registrado</h3>");
+		 		$("#idPersona").val(retorno);
+		 }
+		
 			//alert(retorno);
 		//$("#informe").html("<img src='imagenes/data_entry.png' />");	
 	});

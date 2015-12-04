@@ -37,9 +37,9 @@ if(isset($_POST['nombre']) && isset($_POST['apellido']) && $_POST['direccion'] &
             $persona->telefono=$_POST['telefono'];
             $persona->dni=$_POST['dni'];
             $persona->foto=$nuevoNombreDeFoto;
-             $persona->Guardar();
-
-        echo "Foto Guardada con éxito en carpeta Fotos del servidor";
+            $id=$persona->Guardar();
+            echo "$id";
+       // echo "Foto Guardada con éxito en carpeta Fotos del servidor";
         //Guardar usuario en BD
     }
     

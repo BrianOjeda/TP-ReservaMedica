@@ -3,7 +3,11 @@
  <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
 <script type="text/javascript" src="js/funcionesABM.js"></script>
-
+<script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+ <script src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+  <script src="js/jquery.form.js"></script>
+  <script src="js/jquery.validate.js"></script>
+  <script src="js/jsRegistroJquery.js"></script>
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Persona</h1>
 			<!--  -->
@@ -22,7 +26,7 @@
         <p>Foto<input class="form-control btn btn-info"  name="fichero" type="file" id="fichero"></p>
           <span id="error" class='error1' style="display: none;"></span>
          <p>Preview</p><img  name="imagen" id="imagen" src="" alt="Imagen aqui" width="280" height="250">   
-       <input type="hidden" name="queHacer" id="queHacer" value="GuardarPersona" /> 
+       
         <button  class="btn btn-lg btn-success btn-block" type="submit"><span class="glyphicon glyphicon-floppy-save">&nbsp;&nbsp;</span>Guardar </button>
      
       </form>

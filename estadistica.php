@@ -58,13 +58,13 @@ session_start();
 		echo "<h4 class='glyphicon'>No estas registrado, debe loguearse para ver el contenido de la pagina</h4>";
 		}?>
 			<div class="footer">
-				<div>
+			<!--	<div>
 					
 					
 				</div>
 				<p>
 					&#169; Copyright 2016. All rights reserved
-				</p>
+				</p> -->
 			</div>
 	</div>
 </body>

@@ -24,7 +24,7 @@ class persona
 				$consulta->bindValue(':dni', $this->dni, PDO::PARAM_INT);
 				$consulta->bindValue(':foto', $this->foto, PDO::PARAM_STR);
 				$consulta->execute();		
-				return $objetoAccesoDato->RetornarUltimoIdInsertado();
+				return $this->UltimoID();
 	 }
 	 public function Guardar()
 	 {
@@ -38,7 +38,14 @@ class persona
 
 	 }
 
-
+	public function UltimoID()
+	{
+		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+		$consulta =$objetoAccesoDato->RetornarConsulta("SELECT max(`idPersona`) as id from persona ");
+		$consulta->execute();
+		$cdBuscado= $consulta->fetchObject('persona');
+		return $cdBuscado->id;
+	}
   	public static function TraerTodoLasPersonas()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 

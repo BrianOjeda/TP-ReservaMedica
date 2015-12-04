@@ -1,3 +1,4 @@
+<script type="text/javascript" src="js/funcionesAjax.js"></script>
 <?php 
   require("class/AccesoDatos.php"); 
   require("class/hora.php"); 
@@ -6,18 +7,19 @@
  require("class/obraSocial.php");
 require("class/edad.php");
 
- // $arrayMedico=medico::TraerTodosLosMedicos();
-  //$arrayDate=date::TraerTodasLasFechas();
-  //$arrayHora=hora::TraerTodasLasHoras();
-  //$arrayObraSocial=obraSocial::TraerObraSociales();
-  //$arrayEdades=edad::TraerEdades();
+  $arrayMedico=medico::TraerTodosLosMedicos();
+  $arrayDate=date::TraerTodasLasFechas();
+  $arrayHora=hora::TraerTodasLasHoras();
+  $arrayObraSocial=obraSocial::TraerObraSociales();
+  $arrayEdades=edad::TraerEdades();
  
  ?>
 
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Reserva</h1>
 			<!--  -->
-    <form class="form-ingreso" onsubmit="GuardarPersona();return false">   
+    <form class="form-ingreso" onsubmit="GuardarPersona();return false" id="frmAltaPersona">  
+     <input type="hidden" name="idPersona" id="idPersona" /> 
       <div id="registrado">
          
          <br>

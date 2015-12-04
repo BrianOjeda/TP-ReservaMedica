@@ -16,7 +16,7 @@ $(function () {
             type: 'pie' 
         },
         title: {
-            text: 'Datos'
+            text: 'Medicos por especialidad'
         },
         yAxis: {
             allowDecimals: false,

@@ -68,6 +68,7 @@ switch ($queHago) {
 		$otroHospital=$_POST['otroHospital'];
 		$historia=$_POST['historia'];
 		$turno=$_POST['turno'];
+		$persona=$_POST['persona'];
 		$suceso=new sucesos();
 		$suceso->trastorno=$trastorno;
 		$suceso->acb=$acb;
@@ -83,19 +84,22 @@ switch ($queHago) {
 		 	$reservar->suceso=$sus;
 		 	$reservar->internadoHospital=$hospital;
 		 	$reservar->otroHospital=$otroHospital;
+		 	$reservar->persona=$persona;
 		 	//echo $obra."--".$sexo."--".$turno."--".$historia."--".$titular."---".$edad."--".$sus."--".$hospital."---".$otroHospital."---";
 		 	$aux=$reservar->Insertar();
 			echo "Insertado correctamente";
 		break;	
 		case 'buscarPersona':
 			$per=persona::TraerUnaPersona($_POST['dni']);
-			if ($per->id>0 or $per!=null)
+			if (isset($per))
 			 {
-				echo "Esta registrado";
+				echo "noregistrado";
 			}
 			else
 			{
-				include("partes/frmAltaPersona.php");
+				
+				echo "$per->id";
+				//include("partes/frmAltaPersona.php");
 			}
 			# code...
 			break;
