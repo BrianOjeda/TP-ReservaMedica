@@ -113,26 +113,29 @@ function GuardarPersona()
     		    processData: false,
     			data: envio,
     		});
-    		miAjax.done(function(msg){
-               alert(msg);
+    		miAjax.done(function(msg)
+    		{
+               //alert(msg);
+               	
     		        var strIndex = msg.indexOf('Error');
-                    if(strIndex == -1) {
-                
+                    if(strIndex == -1) 
+                    {
+
+                		
                         alert("Persona insertada correctamente");
-    					//$("#registrado").html("<h3>Ya esta registrado</h3>");
-    					$("#idPersona").val(punto);
-       
+                       // alert("id de la persona:"+msg);
+    					//$("#registrado").html("<h3>Ya esta registrado</h3>");	
                     }
                    else
                     {
                         alert(msg);
                     }
-    			});//fin done
+    		});//fin done
     	    }
 		    });
 		//});
 
-}
+	}
 function cargar(){
     var files = $("#fichero").get(0).files; // $("#fichero") slector por id de jquery  
     var envio = new FormData();
@@ -142,7 +145,7 @@ function cargar(){
     var promise = $.ajax
             ({
             type: "POST",
-            url: "ajaxFoto.php",
+            url: "php/ajaxFoto.php",
             contentType: false,
     		processData: false,
             data: envio,
@@ -157,7 +160,7 @@ function cargar(){
                     var strIndex = dato.indexOf('Error');
                     if(strIndex == -1) {
                         //string no encontrado
-                        $('#imagen').attr("src", "FotosTemp/" + files[0].name);
+                        $('#imagen').attr("src", "php/FotosTemp/" + files[0].name);
                          $('#error').html("");
                     } else {
                         //string encontrado
@@ -228,13 +231,13 @@ function GuardarTurno()
 		var acb=$('#acb').is(':checked');
 		var trastorno=$('#trastorno').is(':checked');
 
-		var edad=$("#edad").val()
+		var edad=$("#edad").val();
 		var hospital=$('#hospital').is(':checked');
 		var otroHospital=$('#otroHospital').is(':checked');
-		var historia=$("#historia").val()
-		var turno=$("#turno").val()
+		var historia=$("#historia").val();
+		var turno=$("#turno").val();
 
-		var persona=$("#idPersona").val()
+		var persona=$("#idPersona").val();
 
 		//alert("obraSocial:"+obra+"--Sexo:"+sexo+"--titular:"+titular+"--fractura:"+fractura+"--abc:"+abc+"---trastorno:"+trastorno+"---edad:"+edad+"--hospital:"+hospital+"---otroHospital:"+otroHospital+"---historia:"+historia+"--turno:"+turno);
 
@@ -262,7 +265,8 @@ function GuardarTurno()
 	});
 	funcionAjax.done(function(retorno){
 		alert(retorno);
-		Mostrar('altaReserva');
+		 
+		window.location.href ="index.php";
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error al ingresar el registro");

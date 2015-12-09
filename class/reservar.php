@@ -19,7 +19,7 @@
 	 public function Insertar()
 	 {
 				$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-				$consulta =$objetoAccesoDato->RetornarConsulta("call insertarReserva(:obra,:sex,:tur,:histo,:ti,:ed,:su,:in,:otro,per)");
+				$consulta =$objetoAccesoDato->RetornarConsulta("call insertarReserva(:obra,:sex,:tur,:histo,:ti,:ed,:su,:in,:otro,:per)");
 
 			    $consulta->bindValue(':obra',$this->obraSocial, PDO::PARAM_STR);
 				$consulta->bindValue(':sex', $this->sexo, PDO::PARAM_STR);

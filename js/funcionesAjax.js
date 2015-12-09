@@ -89,23 +89,24 @@ function deslogear()
 function buscarPersona()
 {
 		//alert(queMostrar);
-	var dni=$("#dni").val();
-	var funcionAjax=$.ajax({
+		var dni=$("#dni").val();
+		var funcionAjax=$.ajax({
 		url:"nexoABM.php",
 		type:"post",
 		data:{queHacer:"buscarPersona",
 			  dni:dni}
 	});
 	funcionAjax.done(function(retorno){
-
+		//alert(retorno);
 		if (retorno=="noregistrado")
 		 {
-		 	$("#registrado").html("<h3>Debe registrarse</h3>");
-		 	$("#registrado").html(Mostrar("altaPersona"));
+		 	$("#principal").html("<h3>Debe registrarse</h3>");
+		 	$("#noEsta").html("<h3>Debe registrarse</h3>");
+		 	Mostrar("altaPersonaRegistrado");
 		 }
 		 else
 		 {
-		 	$("#registrado").html("<h3>Esta registrado</h3>");
+		 	$("#principal").html("<h3>Esta registrado</h3>");
 		 		$("#idPersona").val(retorno);
 		 }
 		
@@ -121,6 +122,24 @@ function buscarPersona()
 
 	});
 }
+
+        function mostrarHistorial( obj ){
+            //var container = document.getElementById("describe") ;
+            //container.innerHTML = " Item seleccionado.. " + obj[ obj.selectedIndex ].value ;
+            //estado=0;                          
+		    $("#oculta").click(function () { 
+		       if(obj[ obj.selectedIndex ].value==1) {
+		         $('#historia').slideDown('fast');
+		      //   estado=1;
+		      } else {
+		      	$('#historia').slideUp('fast');
+		         
+		        // estado=0;
+		      }
+		    });
+        }
+
+
 //function validarObraSocial()
 //{
  //if ($('#check').is(':checked')) 

@@ -57,6 +57,7 @@ switch ($queHago) {
 			echo "turno insertado correctamente";
 		break;	
 		case 'GuardarReserva':
+
 		$obra=$_POST['obra'];
 		$sexo=$_POST['sexo'];
 		$titular=$_POST['titular'];
@@ -74,6 +75,8 @@ switch ($queHago) {
 		$suceso->acb=$acb;
 		$suceso->fractura=$fractura;
 		$sus=$suceso->Insertar();
+
+		
 			$reservar=new reservar();
 			$reservar->obraSocial=$obra;
 		 	$reservar->sexo=$sexo;
@@ -91,13 +94,14 @@ switch ($queHago) {
 		break;	
 		case 'buscarPersona':
 			$per=persona::TraerUnaPersona($_POST['dni']);
-			if (isset($per))
+			if ($per == null or $per->id==0)
 			 {
+			 	//echo "$per->id";
 				echo "noregistrado";
 			}
 			else
 			{
-				
+				//echo "noregistrado";
 				echo "$per->id";
 				//include("partes/frmAltaPersona.php");
 			}

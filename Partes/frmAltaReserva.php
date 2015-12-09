@@ -1,4 +1,6 @@
 <script type="text/javascript" src="js/funcionesAjax.js"></script>
+<script type="text/javascript" src="js/jquery.validate.js"></script>
+<script type="text/javascript" src="js/jquery.form.js"></script>
 <?php 
   require("class/AccesoDatos.php"); 
   require("class/hora.php"); 
@@ -14,13 +16,13 @@ require("class/edad.php");
   $arrayEdades=edad::TraerEdades();
  
  ?>
-
 <div class="CajaInicio animated bounceInRight">
 	<h1> Alta Reserva</h1>
 			<!--  -->
     <form class="form-ingreso" onsubmit="GuardarPersona();return false" id="frmAltaPersona">  
      <input type="hidden" name="idPersona" id="idPersona" /> 
-      <div id="registrado">
+     <div id="noEsta"></div>
+      <div id="principal">
          
          <br>
          <br>
@@ -32,7 +34,7 @@ require("class/edad.php");
     </form>
 
 
-	 <form class="form-ingreso" onsubmit="GuardarReserva();return false" enctype="multipart/form-data">
+	 <form id="frmReserva" class="form-ingreso" onsubmit="GuardarReserva();return false" enctype="multipart/form-data">
         <h4>Obras sociales disponibles</h4>
            <select id="obra" name="obra" class="list-group-item  list-group-item list-group-item-success form-control">
                    <?php
@@ -105,10 +107,13 @@ require("class/edad.php");
              </table>
               <br>
           <h4>Seleccione...</h4>
-            <select id="area" name="area" class="list-group-item  list-group-item list-group-item-success form-control">
-               <option value='$edad->id'>Agregar historia clinica</option>
-               <option value='$edad->id'>No Agregar</option> 
+          <div id="describe">
+            <select id="oculta" name="oculta" class="list-group-item  list-group-item list-group-item-success form-control" onchange="mostrarHistorial(this);">
+               <option value="1">Agregar historia clinica</option>
+               <option value="2">No Agregar</option> 
             </select>
+          </div>
+            
             <br>
             <textarea class="form-control" id="historia" name="historia">
             </textarea>

@@ -49,19 +49,30 @@ $(document).ready(function(){
     			data: envio,
     		});
     		miAjax.done(function(msg){
-               alert(msg);
+               //alert(msg);
     		        var strIndex = msg.indexOf('Error');
                     if(strIndex == -1) {
                         //string no encontrado
         		        //$("#mensaje").html(msg + "<br><strong>Persona insertada correctamente!</strong>");
         		        //$("#mensaje").show();
-                        alert("Persona insertada correctamente");
-    					document.getElementById("nombre").value="";
-        				document.getElementById("apellido").value="";
-        				document.getElementById("telefono").value="";
-        				document.getElementById("direccion").value="";
-        				document.getElementById("dni").value="";
-        				document.getElementById("fichero").value="";
+                        if(msg=="existe")
+                        {
+                            alert("ya existe esa persona con ese dni");
+                        }
+                        else
+                        {
+                            $("#idPersona").val(msg);
+                            alert("Persona insertada correctamente");
+                            document.getElementById("nombre").value="";
+                            document.getElementById("apellido").value="";
+                            document.getElementById("telefono").value="";
+                            document.getElementById("direccion").value="";
+                            document.getElementById("dni").value="";
+                            document.getElementById("fichero").value="";
+                            $("#principal").html("<h3>Esta registrado</h3>");
+                            $("#noEsta").html("<h3></h3>");
+                        }
+                        
         				//setTimeout(function() {
         				  //  $('#mensaje').fadeOut('fast');
         				   // window.location.href="menu.php";
@@ -101,7 +112,7 @@ function cargar(){
                     var strIndex = dato.indexOf('Error');
                     if(strIndex == -1) {
                         //string no encontrado
-                        $('#imagen').attr("src", "FotosTemp/" + files[0].name);
+                        $('#imagen').attr("src", "php/FotosTemp/" + files[0].name);
                          $('#error').html("");
                     } else {
                         //string encontrado

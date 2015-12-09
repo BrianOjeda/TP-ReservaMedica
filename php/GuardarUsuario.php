@@ -9,7 +9,9 @@ require_once("../class/persona.php");
 if(isset($_POST['nombre']) && isset($_POST['apellido']) && $_POST['direccion'] && isset($_POST['telefono']) && isset($_POST['dni']) )
     {
        
-    
+     $per=persona::TraerUnaPersona($_POST['dni']);
+     if ($per == null or $per->id==0)
+        {
 
         $ruta=getcwd();  //ruta directorio actual
         $rutaDestino=$ruta."/fotos/";
@@ -29,16 +31,25 @@ if(isset($_POST['nombre']) && isset($_POST['apellido']) && $_POST['direccion'] &
          //echo "	</br>";
         //Muevo a carpeta Fotos
 		rename($rutaActual,$rutaDestino.$nuevoNombreDeFoto);
-        //
-            $persona = new persona();
-            $persona->nombre=$_POST['nombre'];
-            $persona->apellido=$_POST['apellido'];
-            $persona->direccion=$_POST['direccion'];
-            $persona->telefono=$_POST['telefono'];
-            $persona->dni=$_POST['dni'];
-            $persona->foto=$nuevoNombreDeFoto;
-            $id=$persona->Guardar();
-            echo "$id";
+           
+                $persona = new persona();
+                $persona->nombre=$_POST['nombre'];
+                $persona->apellido=$_POST['apellido'];
+                $persona->direccion=$_POST['direccion'];
+                $persona->telefono=$_POST['telefono'];
+                $persona->dni=$_POST['dni'];
+                $persona->foto=$nuevoNombreDeFoto;
+                $id=$persona->Insertar();
+                echo "$id";
+                //echo "noregistrado";
+            }
+            else
+            {
+                //echo "noregistrado";
+                echo "existe";
+                //include("partes/frmAltaPersona.php");
+            }
+           
        // echo "Foto Guardada con éxito en carpeta Fotos del servidor";
         //Guardar usuario en BD
     }

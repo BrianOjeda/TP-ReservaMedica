@@ -26,7 +26,9 @@ switch ($queHago) {
 	case 'altaPersona':
 		include("partes/frmAltaPersona.php");
 	break;
-	
+	case 'altaPersonaRegistrado':
+		include("partes/frmAltaPersonaRegistrado.php");
+	break;
 	case 'altaEspecialidad':
 		include("partes/frmAltaEspecialidad.php");
 	break;
