@@ -1,16 +1,18 @@
-function BorrarCD(idParametro)
+function BorrarReserva(idParametro)
 {
+
 		var funcionAjax=$.ajax({
-		url:"nexo.php",
+		url:"nexoABM.php",
 		type:"post",
 		data:{
-			queHacer:"BorrarCD",
+			queHacer:"BorrarReserva",
 			id:idParametro	
 		}
 	});
 	funcionAjax.done(function(retorno){
-		Mostrar("MostrarGrilla");
-		$("#informe").html("cantidad de eliminados "+ retorno);	
+		alert(retorno);
+		Mostrar("grillaReserva");
+		//$("#informe").html("cantidad de eliminados "+ retorno);	
 		
 	});
 	funcionAjax.fail(function(retorno){	
@@ -57,7 +59,7 @@ function GuardarEspecialidad()
 	});
 	funcionAjax.done(function(retorno){
 		alert(retorno);
-		Mostrar('altaEspecialidad');
+		window.location.href ="baseDatos.php";
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error al ingresar el registro");
@@ -188,7 +190,8 @@ function GuardarMedico()
 	});
 	funcionAjax.done(function(retorno){
 		alert(retorno);
-		Mostrar('altaMedico');
+		//Mostrar('altaMedico');
+		window.location.href ="baseDatos.php";
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error al ingresar el registro");
@@ -213,8 +216,9 @@ function GuardarTurno()
 		}
 	});
 	funcionAjax.done(function(retorno){
-		alert(retorno);
-		Mostrar('altaTurno');
+		//alert(retorno);
+		//Mostrar('altaTurno');
+		window.location.href ="baseDatos.php";
 	});
 	funcionAjax.fail(function(retorno){	
 		alert("Error al ingresar el registro");

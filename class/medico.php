@@ -105,12 +105,13 @@ class medico
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "medico");		
 	}
 
-	public static function TraerUnCd($id) 
+	public static function TraerUnMedico($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, titel as titulo, interpret as cantante,jahr as año from cds where id = $id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idMedico` as id, `idEspecialidad` as idEspecialidad,
+			 `idPersona` as idPersona FROM `medico` WHERE `idMedico`=$id");
 			$consulta->execute();
-			$cdBuscado= $consulta->fetchObject('cd');
+			$cdBuscado= $consulta->fetchObject('medico');
 			return $cdBuscado;				
 
 			

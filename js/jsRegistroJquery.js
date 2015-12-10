@@ -69,7 +69,7 @@ $(document).ready(function(){
                             document.getElementById("direccion").value="";
                             document.getElementById("dni").value="";
                             document.getElementById("fichero").value="";
-                            $("#principal").html("<h3>Esta registrado</h3>");
+                            $("#principal").html("<h3>Persona insertada</h3>");
                             $("#noEsta").html("<h3></h3>");
                         }
                         

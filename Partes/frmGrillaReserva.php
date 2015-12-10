@@ -1,10 +1,15 @@
-
+<script type="text/javascript" src="js/funcionesABM.js"></script>
 <?php 
 session_start();
 if(isset($_SESSION['registrado']))
 {
 	require_once("class/AccesoDatos.php");
 	require_once("class/reservar.php");
+	require_once("class/turno.php");
+	require_once("class/medico.php");
+	require_once("class/date.php");
+	require_once("class/persona.php");
+	require_once("class/hora.php");
 	$arrayReserva=reservar::TraerTodasLasReservas();
 	echo "<h2> Bienvenido: ". $_SESSION['registrado']."</h2>";
 
@@ -12,7 +17,7 @@ if(isset($_SESSION['registrado']))
 <table class="table"  style=" background-color: beige;">
 	<thead>
 		<tr>
-			<th>Editar</th><th>Borrar</th><th>Obra social</th><th>Sexo</th><th>Turno</th><th>Historia clinica</th><th>Titular</th>
+			<th>Editar</th><th>Borrar</th><th>Paciente</th><th>Dni</th><th>Medico</th>
 		</tr>
 	</thead>
 	<tbody>
@@ -21,14 +26,18 @@ if(isset($_SESSION['registrado']))
 
 
 foreach ($arrayReserva as $cd) {
+	$persona=persona::TraerUnaPersonaPorID($cd->persona);
+	$turno=turno::TraerUnTurno($cd->turno);
+	$medico=medico::TraerUnMedico($turno->idMedico);
+	$datosMedico=persona::TraerUnaPersonaPorID($medico->idPersona);
+	$fecha=date::TraerFecha($turno->idDate);
+	$hora=hora::TraerUnaHoraPorID($turno->idHora);
 	echo"<tr>
-			<td><a onclick='EditarCD($cd->id)' class='btn btn-warning'> <span class='glyphicon glyphicon-pencil'>&nbsp;</span>Editar</a></td>
-			<td><a onclick='BorrarCD($cd->id)' class='btn btn-danger'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Borrar</a></td>
-			<td>$cd->obraSocial</td>
-			<td>$cd->sexo</td>
-			<td>$cd->turno</td>
-			<td>$cd->historia</td>
-			<td>$cd->titular</td>
+			<td><a onclick='BorrarReserva($cd->id)' class='btn btn-danger'>   <span class='glyphicon glyphicon-trash'>&nbsp;</span>  Borrar</a></td>
+			<td>$persona->nombre </br> $persona->apellido</td>
+			<td>$persona->dni</td>
+			<td>$datosMedico->nombre </br> $datosMedico->apellido</td>
+			<td>fecha:$fecha->fecha </br> $hora->descripcion</td>
 		</tr>   ";
 }
 		 ?>

@@ -29,7 +29,7 @@
 							<a href="login.php">Login</a>
 						</li>
 						<li>
-							<a href="about.php">About</a>
+							<a href="baseDatos.php">Base de datos</a>
 						</li>
 						<li>
 							<a href="ubicacion.php">Mapa</a>

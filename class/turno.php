@@ -6,14 +6,14 @@ class turno
   	public $idMedico;
   	public $idHora;
 
-  	public function BorrarCd()
+  	public function Borrar()
 	 {
 	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
 			$consulta =$objetoAccesoDato->RetornarConsulta("
 				delete 
-				from cds 				
-				WHERE id=:id");	
-				$consulta->bindValue(':id',$this->id, PDO::PARAM_INT);		
+				from turno_medico 				
+				WHERE idTurno=:id");	
+				$consulta->bindValue(':id',$this->id, PDO::PARAM_STR);		
 				$consulta->execute();
 				return $consulta->rowCount();
 	 }
@@ -98,20 +98,23 @@ class turno
   	public static function TraerTodosLosTurnos()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodosLosTurnos()");
+			//$consulta =$objetoAccesoDato->RetornarConsulta("call TraerTodosLosTurnos()");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idTurno` as id,`idMedico` as idMedico, `idDate` as idDate,`idhora` as idHora from turno_medico
+			where idTurno not in
+
+			(SELECT t.idTurno FROM turno_medico t join reserva r 
+			on (t.idTurno=r.idTurno))");
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "turno");		
 	}
 
-	public static function TraerUnCd($id) 
+	public static function TraerUnTurno($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, titel as titulo, interpret as cantante,jahr as año from cds where id = $id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idTurno` as id, `idMedico` as idMedico, `idDate` as idDate, `idhora` as idHora FROM `turno_medico` WHERE idTurno=$id");
 			$consulta->execute();
-			$cdBuscado= $consulta->fetchObject('cd');
-			return $cdBuscado;				
-
-			
+			$cdBuscado= $consulta->fetchObject('turno');
+			return $cdBuscado;						
 	}
 
 	public static function TraerUnCdAnio($id,$anio) 

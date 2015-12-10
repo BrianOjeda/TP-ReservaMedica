@@ -62,8 +62,17 @@ class persona
 			$consulta->execute();
 			$cdBuscado= $consulta->fetchObject('persona');
 			return $cdBuscado;				
-
-			
+	
+	}
+	public static function TraerUnaPersonaPorID($id) 
+	{
+			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idPersona` as id, `nombre` as nombre, `apellido` as apellido, `dni` as dni, `direccion` as direccion, `telefono` as telefono, `foto` as foto FROM `persona` WHERE idPersona=:id");
+			$consulta->bindValue(':id', $id, PDO::PARAM_STR);
+			$consulta->execute();
+			$cdBuscado= $consulta->fetchObject('persona');
+			return $cdBuscado;				
+	
 	}
 
 	public static function TraerUnCdAnio($id,$anio) 

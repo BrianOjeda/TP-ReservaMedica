@@ -50,6 +50,10 @@ switch ($queHago) {
 	case 'VerEnMapa':
 			include("partes/formMapaGoogle.php");
 		break;
+	case 'listaPersonas':
+			include("formGrillaWS.php");
+		break;
+		
 	default:
 		# code...
 		break;

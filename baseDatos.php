@@ -57,6 +57,9 @@ session_start();
 							    <a onclick="Mostrar('grillaReserva')" class="list-group-item  list-group-item list-group-item-success">
 								 <h4 class="list-group-item-heading">Mostrar todas las reservas disponibles</h4>
 							  </a>
+							   <a onclick="Mostrar('listaPersonas')" class="list-group-item  list-group-item list-group-item-success">
+								 <h4 class="list-group-item-heading">Mostrar todas las personas</h4>
+							  </a>
 							</div>
 						
 						</div>

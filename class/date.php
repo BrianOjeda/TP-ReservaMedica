@@ -104,15 +104,13 @@ class date
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "date");		
 	}
 
-	public static function TraerUnCd($id) 
+	public static function TraerFecha($id) 
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("select id, titel as titulo, interpret as cantante,jahr as año from cds where id = $id");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `year`as año, `month` as mes, `day` as dia, `Date` as fecha, `IdDate` as id FROM `date` WHERE IdDate= $id");
 			$consulta->execute();
-			$cdBuscado= $consulta->fetchObject('cd');
-			return $cdBuscado;				
-
-			
+			$cdBuscado= $consulta->fetchObject('date');
+			return $cdBuscado;					
 	}
 
 	public static function TraerUnCdAnio($id,$anio) 

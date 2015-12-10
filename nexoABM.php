@@ -90,6 +90,9 @@ switch ($queHago) {
 		 	$reservar->persona=$persona;
 		 	//echo $obra."--".$sexo."--".$turno."--".$historia."--".$titular."---".$edad."--".$sus."--".$hospital."---".$otroHospital."---";
 		 	$aux=$reservar->Insertar();
+		 	//$borrarTurno=new turno();
+		 	//$borrarTurno->id=$reservar->turno;
+		 	//$borrarTurno->Borrar();
 			echo "Insertado correctamente";
 		break;	
 		case 'buscarPersona':
@@ -107,6 +110,12 @@ switch ($queHago) {
 			}
 			# code...
 			break;
+		case 'BorrarReserva':
+			$reserva = new reservar();		
+			$reserva->id=$_POST['id'];
+			$reserva->Borrar();
+			echo "Reserva Eliminada";
+		break;	
 	default:
 		# code...
 		break;

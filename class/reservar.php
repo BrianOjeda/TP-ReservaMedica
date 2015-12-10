@@ -35,15 +35,27 @@
 
 				return $objetoAccesoDato->RetornarUltimoIdInsertado();
 	 }
-	 	public static function TraerTodasLasReservas()
+	 public static function TraerTodasLasReservas()
 	{
 			$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
-			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idReserva` as id, `idObraSocial` as obraSocial,
-			 `idTurno` as turno, `historiaClinica` as historia, `motivoTurno`, `titular` as titular, `resena` FROM `reserva` ");
+			$consulta =$objetoAccesoDato->RetornarConsulta("SELECT `idReserva` as id, `idObraSocial` as obraSocial, `idSexo` as sexo, `idTurno` as turno,
+			 `historiaClinica` as historia, `titular` as titular, `idEdad` as edad, `idSucesos` as suceso,
+			 `internadoHospital` as internadoHospital, `internadoOtroHospital` as otroHospital, `idPersona` as persona
+			  FROM `reserva` ");
 			$consulta->execute();			
 			return $consulta->fetchAll(PDO::FETCH_CLASS, "reservar");		
 	}
-
+	public function Borrar()
+	 {
+	 		$objetoAccesoDato = AccesoDatos::dameUnObjetoAcceso(); 
+			$consulta =$objetoAccesoDato->RetornarConsulta("
+				delete 
+				from reserva 				
+				WHERE idReserva=:id");	
+				$consulta->bindValue(':id',$this->id, PDO::PARAM_STR);		
+				$consulta->execute();
+				return $consulta->rowCount();
+	 }
 	
  } 
  ?>
